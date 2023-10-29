@@ -1,0 +1,63 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>Nullable</WarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\TableReservation\Command\Create\Entities\" />
+    <Folder Include="Features\TableReservation\Command\Delete\Entities\" />
+    <Folder Include="Features\TableReservation\Command\Delete\Interface\" />
+    <Folder Include="Features\TableReservation\Command\Delete\Repositories\Script\" />
+    <Folder Include="Features\TableReservation\Command\Update\Entities\" />
+    <Folder Include="Features\TableReservation\Command\Update\Interface\" />
+    <Folder Include="Features\TableReservation\Command\Update\Repositories\Script\" />
+    <Folder Include="Features\TableReservation\Query\GetAll\Entities\" />
+    <Folder Include="Features\TableReservation\Query\GetAll\Interface\" />
+    <Folder Include="Features\TableReservation\Query\GetAll\Repositories\Script\" />
+    <Folder Include="Features\TableReservation\Query\GetById\Entities\" />
+    <Folder Include="Features\TableReservation\Query\GetById\Interface\" />
+    <Folder Include="Features\TableReservation\Query\GetById\Repositories\Script\" />
+    <Folder Include="Features\DigitalMenuItem\Command\Create\Entities\" />
+    <Folder Include="Features\DigitalMenuItem\Command\Delete\Entities\" />
+    <Folder Include="Features\DigitalMenuItem\Command\Delete\Interface\" />
+    <Folder Include="Features\DigitalMenuItem\Command\Delete\Repositories\Script\" />
+    <Folder Include="Features\DigitalMenuItem\Command\Update\Entities\" />
+    <Folder Include="Features\DigitalMenuItem\Command\Update\Interface\" />
+    <Folder Include="Features\DigitalMenuItem\Command\Update\Repositories\Script\" />
+    <Folder Include="Features\DigitalMenuItem\Query\GetAll\Entities\" />
+    <Folder Include="Features\DigitalMenuItem\Query\GetAll\Interface\" />
+    <Folder Include="Features\DigitalMenuItem\Query\GetAll\Repositories\Script\" />
+    <Folder Include="Features\DigitalMenuItem\Query\GetById\Entities\" />
+    <Folder Include="Features\DigitalMenuItem\Query\GetById\Interface\" />
+    <Folder Include="Features\DigitalMenuItem\Query\GetById\Repositories\Script\" />
+    <Folder Include="Shared\Factories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.0.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Castle.Core" Version="5.1.1" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Flunt" Version="2.0.5" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
+    <PackageReference Include="MySqlConnector" Version="2.2.6" />
+    <PackageReference Include="Polly" Version="7.2.3" />
+    <PackageReference Include="Polly.Extensions.Http" Version="3.0.0" />
+    <PackageReference Include="Refit" Version="6.3.2" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.1" />
+  </ItemGroup>
+
+</Project>
