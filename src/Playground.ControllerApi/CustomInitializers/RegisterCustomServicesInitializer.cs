@@ -6,13 +6,17 @@ using Playground.Application.Features.Dish.Command.Create.Interface;
 using Playground.Application.Features.Dish.Command.Create.Models;
 using Playground.Application.Features.Dish.Command.Create.Repositories;
 using Playground.Application.Features.Dish.Command.Create.UseCase;
+using Playground.Application.Features.Dish.Command.Delete.Interface;
 using Playground.Application.Features.Dish.Command.Delete.Models;
+using Playground.Application.Features.Dish.Command.Delete.Repositories;
 using Playground.Application.Features.Dish.Command.Delete.UseCase;
 using Playground.Application.Features.Dish.Command.GetAll.Interface;
 using Playground.Application.Features.Dish.Command.GetAll.Repositories;
 using Playground.Application.Features.Dish.Command.GetById.Interface;
 using Playground.Application.Features.Dish.Command.GetById.Repositories;
+using Playground.Application.Features.Dish.Command.Update.Interface;
 using Playground.Application.Features.Dish.Command.Update.Models;
+using Playground.Application.Features.Dish.Command.Update.Repositories;
 using Playground.Application.Features.Dish.Command.Update.UseCase;
 using Playground.Application.Features.Dish.Query.GetAll.Models;
 using Playground.Application.Features.Dish.Query.GetAll.UseCase;
@@ -87,13 +91,14 @@ namespace Microsoft.AspNetCore.Builder
             services.AddTransient<IRequestHandler<CreateDishCommand, CreateDishOutput>, CreateDishUseCaseHandler>();
             services.AddTransient<IRequestHandler<DeleteDishCommand, DeleteDishOutput>, DeleteDishUseCaseHandler>();
             services.AddTransient<IRequestHandler<UpdateDishCommand, UpdateDishOutput>, UpdateDishUseCaseHandler>();
-            services.AddTransient<IRequestHandler<UpdateDishCommand, UpdateDishOutput>, UpdateDishUseCaseHandler>();
             services.AddTransient<IRequestHandler<GetAllDishQuery, IEnumerable<GetAllDishOutput>>, GetAllDishUseCaseHandler>();
             services.AddTransient<IRequestHandler<GetByIdDishQuery, GetByIdDishOutput>, GetByIdDishUseCaseHandler>();
         }
         private static void RegisterInterfaces(IServiceCollection services)
         {
             services.AddScoped<ICreateDishRepository, CreateDishRepository>();
+            services.AddScoped<IDeleteDishRepository, DeleteDishRepository>();
+            services.AddScoped<IUpdateDishRepository, UpdateDishRepository>();
             services.AddScoped<IGetAllDishRepository, GetAllDishRepository>();
             services.AddScoped<IGetByIdDishRepository, GetByIdDishRepository>();
         }

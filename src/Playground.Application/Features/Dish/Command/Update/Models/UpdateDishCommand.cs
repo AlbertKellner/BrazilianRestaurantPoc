@@ -3,12 +3,14 @@ using Flunt.Validations;
 using MediatR;
 using System.Text.Json.Serialization;
 using Playground.Application.Shared.Features.Models;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Playground.Application.Features.Dish.Command.Update.Models
 {
     public class UpdateDishCommand : ValidatableInputBase, IRequest<UpdateDishOutput>
     {
-        [JsonPropertyName("id")]
+        [JsonIgnore]
+        [BindNever]
         public Guid Id { get; set; }
 
         [JsonPropertyName("dish_name")]

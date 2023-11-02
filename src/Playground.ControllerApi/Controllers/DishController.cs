@@ -73,12 +73,12 @@ namespace Playground.Controllers
 
             if (output.IsValid())
             {
-                _logger.LogWarning($"[Api][DishController][GetByIdAsync][Ok] input:({input.ToInformation()})");
+                _logger.LogInformation($"[Api][DishController][GetByIdAsync][Ok] input:({input.ToInformation()})");
 
                 return Ok(output);
             }
 
-            _logger.LogWarning($"[Api][DishController][GetByIdAsync][NoContent] input:({input.ToInformation()})");
+            _logger.LogInformation($"[Api][DishController][GetByIdAsync][NoContent] input:({input.ToInformation()})");
 
             return NoContent();
         }
@@ -93,13 +93,17 @@ namespace Playground.Controllers
 
             if (output.Any())
             {
+                _logger.LogInformation($"[Api][DishController][GetAllAsync][Ok]");
+
                 return Ok(output);
             }
+
+            _logger.LogInformation($"[Api][DishController][GetAllAsync][NoContent]");
 
             return NoContent();
         }
 
-        [HttpPut("{id:long}")]
+        [HttpPut("{id:Guid}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]

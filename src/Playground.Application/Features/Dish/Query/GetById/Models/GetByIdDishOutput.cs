@@ -48,6 +48,6 @@ namespace Playground.Application.Features.Dish.Query.GetById.Models
         [JsonPropertyName("special")]
         public bool Special { get; set; } = false;
 
-        public bool IsValid() => true;
+        public bool IsValid() => Id != Guid.Empty;
     }
 }

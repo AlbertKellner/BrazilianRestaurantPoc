@@ -4,17 +4,6 @@ namespace Playground.Application.Features.Dish.Command.Update.Models
 {
     public class UpdateDishOutput
     {
-        [JsonPropertyName("id")]
-        public long Id { get; set; }
-
-        [JsonPropertyName("task")]
-        public string Task { get; set; } = string.Empty;
-
-        [JsonPropertyName("is_completed")]
-        public bool IsCompleted { get; set; }
-
-        public bool IsValid() =>
-            Id > 0
-            && !string.IsNullOrEmpty(Task);
+        public bool IsValid() => true;
     }
 }

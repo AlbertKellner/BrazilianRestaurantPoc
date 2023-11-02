@@ -48,8 +48,18 @@ namespace Playground.Application.Shared.InMemoryDatabase
             if (existingItem != null)
             {
                 existingItem.DishName = updatedItem.DishName;
+                existingItem.Description = updatedItem.Description;
                 existingItem.Price = updatedItem.Price;
+                existingItem.Category = updatedItem.Category;
+                existingItem.CookingTime = updatedItem.CookingTime;
+                existingItem.ServingSize = updatedItem.ServingSize;
+                existingItem.Ingredients = updatedItem.Ingredients;
+                existingItem.Allergens = updatedItem.Allergens;
+                existingItem.SpicinessLevel = updatedItem.SpicinessLevel;
                 existingItem.IsAvailable = updatedItem.IsAvailable;
+                existingItem.ImageUrl = updatedItem.ImageUrl;
+                existingItem.ChefRecommendation = updatedItem.ChefRecommendation;
+                existingItem.Special = updatedItem.Special;
             }
         }
 
