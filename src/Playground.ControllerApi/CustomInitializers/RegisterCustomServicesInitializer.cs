@@ -8,6 +8,8 @@ using Playground.Application.Features.Dish.Command.Create.Repositories;
 using Playground.Application.Features.Dish.Command.Create.UseCase;
 using Playground.Application.Features.Dish.Command.Delete.Models;
 using Playground.Application.Features.Dish.Command.Delete.UseCase;
+using Playground.Application.Features.Dish.Command.GetAll.Interface;
+using Playground.Application.Features.Dish.Command.GetAll.Repositories;
 using Playground.Application.Features.Dish.Command.Update.Models;
 using Playground.Application.Features.Dish.Command.Update.UseCase;
 using Playground.Application.Features.Dish.Query.GetAll.Models;
@@ -90,6 +92,7 @@ namespace Microsoft.AspNetCore.Builder
         private static void RegisterInterfaces(IServiceCollection services)
         {
             services.AddScoped<ICreateDishRepository, CreateDishRepository>();
+            services.AddScoped<IGetAllDishRepository, GetAllDishRepository>();
         }
 
         private static void RegisterCustomDependencies(IServiceCollection services)

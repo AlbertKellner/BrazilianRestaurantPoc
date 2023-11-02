@@ -28,8 +28,6 @@
     <Folder Include="Features\Dish\Command\Update\Entities\" />
     <Folder Include="Features\Dish\Command\Update\Interface\" />
     <Folder Include="Features\Dish\Command\Update\Repositories\Script\" />
-    <Folder Include="Features\Dish\Query\GetAll\Entities\" />
-    <Folder Include="Features\Dish\Query\GetAll\Interface\" />
     <Folder Include="Features\Dish\Query\GetAll\Repositories\Script\" />
     <Folder Include="Features\Dish\Query\GetById\Entities\" />
     <Folder Include="Features\Dish\Query\GetById\Interface\" />

@@ -16,19 +16,28 @@ namespace Playground.Application.Features.Dish.Command.Create.Repositories
 
         public async Task<CreateDishOutput> CreateDishAsync(CreateDishCommand input, CancellationToken cancellationToken)
         {
-            // Simulating some asynchronous operation
-            await Task.Delay(100);
-
-            // Add the input to the in-memory database
-            _inMemoryDatabase.AddDishItem(new DataBaseDishItem
+            var newItem = new DataBaseDishItem
             {
                 Id = input.Id,
                 DishName = input.DishName,
+                Description = input.Description,
                 Price = input.Price,
-                IsAvailable = input.IsAvailable
-            });
+                Category = input.Category,
+                CookingTime = input.CookingTime,
+                ServingSize = input.ServingSize,
+                Ingredients = input.Ingredients,
+                Allergens = input.Allergens,
+                SpicinessLevel = input.SpicinessLevel,
+                IsAvailable = input.IsAvailable,
+                ImageUrl = input.ImageUrl,
+                ChefRecommendation = input.ChefRecommendation,
+                Special = input.Special
+            };
+
+            _inMemoryDatabase.AddDishItem(newItem);
 
             return new CreateDishOutput { Id = input.Id };
         }
+
     }
 }

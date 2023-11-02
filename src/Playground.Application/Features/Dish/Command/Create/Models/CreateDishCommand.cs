@@ -3,13 +3,21 @@ using System.Text.Json.Serialization;
 using Flunt.Notifications;
 using Flunt.Validations;
 using Playground.Application.Shared.Features.Models;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Playground.Application.Features.Dish.Command.Create.Models
 {
     public class CreateDishCommand : ValidatableInputBase, IRequest<CreateDishOutput>
     {
+        public CreateDishCommand()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        [JsonIgnore]
+        [BindNever]
         [JsonPropertyName("id")]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public Guid Id { get; private set; }
 
         [JsonPropertyName("dish_name")]
         public string DishName { get; set; } = string.Empty;
