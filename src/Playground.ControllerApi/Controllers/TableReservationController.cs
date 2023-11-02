@@ -47,7 +47,7 @@ namespace Playground.Controllers
 
             return CreatedAtRoute(
                 routeName: "TableReservationGetById",
-                routeValues: new { reservationId = output.ReservationId },
+                routeValues: new { id = output.Id },
                 default);
         }
 
@@ -60,7 +60,7 @@ namespace Playground.Controllers
             [FromQuery] GetByIdTableReservationQuery input,
             CancellationToken cancellationToken)
         {
-            input.SetReservationId(Id);
+            input.SetId(Id);
 
             if (input.IsInvalid())
             {
@@ -73,12 +73,12 @@ namespace Playground.Controllers
 
             if (output.IsValid())
             {
-                _logger.LogWarning($"[Api][TableReservationController][GetByIdAsync][Ok] input:({input.ToInformation()})");
+                _logger.LogInformation($"[Api][TableReservationController][GetByIdAsync][Ok] input:({input.ToInformation()})");
 
                 return Ok(output);
             }
 
-            _logger.LogWarning($"[Api][TableReservationController][GetByIdAsync][NoContent] input:({input.ToInformation()})");
+            _logger.LogInformation($"[Api][TableReservationController][GetByIdAsync][NoContent] input:({input.ToInformation()})");
 
             return NoContent();
         }
@@ -93,8 +93,12 @@ namespace Playground.Controllers
 
             if (output.Any())
             {
+                _logger.LogInformation($"[Api][TableReservationController][GetAllAsync][Ok]");
+
                 return Ok(output);
             }
+
+            _logger.LogInformation($"[Api][TableReservationController][GetAllAsync][NoContent]");
 
             return NoContent();
         }
@@ -108,7 +112,7 @@ namespace Playground.Controllers
             [FromBody] UpdateTableReservationCommand input,
             CancellationToken cancellationToken)
         {
-            input.SetReservationId(id);
+            input.SetId(id);
 
             if (input.IsInvalid())
             {

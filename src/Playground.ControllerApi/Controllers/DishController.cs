@@ -46,12 +46,12 @@ namespace Playground.Controllers
             _logger.LogInformation($"[Api][DishController][CreateAsync][Created] input:({input.ToInformation()})");
 
             return CreatedAtRoute(
-                routeName: "GetById",
+                routeName: "DishGetById",
                 routeValues: new { id = output.Id },
                 default);
         }
 
-        [HttpGet("{id:Guid}", Name = "GetById")]
+        [HttpGet("{id:Guid}", Name = "DishGetById")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(GetByIdDishOutput), (int)HttpStatusCode.OK)]

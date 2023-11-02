@@ -8,19 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\TableReservation\Command\Create\Entities\" />
-    <Folder Include="Features\TableReservation\Command\Delete\Entities\" />
-    <Folder Include="Features\TableReservation\Command\Delete\Interface\" />
-    <Folder Include="Features\TableReservation\Command\Delete\Repositories\Script\" />
-    <Folder Include="Features\TableReservation\Command\Update\Entities\" />
-    <Folder Include="Features\TableReservation\Command\Update\Interface\" />
-    <Folder Include="Features\TableReservation\Command\Update\Repositories\Script\" />
-    <Folder Include="Features\TableReservation\Query\GetAll\Entities\" />
-    <Folder Include="Features\TableReservation\Query\GetAll\Interface\" />
-    <Folder Include="Features\TableReservation\Query\GetAll\Repositories\Script\" />
-    <Folder Include="Features\TableReservation\Query\GetById\Entities\" />
-    <Folder Include="Features\TableReservation\Query\GetById\Interface\" />
-    <Folder Include="Features\TableReservation\Query\GetById\Repositories\Script\" />
     <Folder Include="Features\Dish\Query\GetAll\Repositories\Script\" />
   </ItemGroup>
 
