@@ -26,10 +26,10 @@ namespace Playground.Application.Features.Dish.Query.GetAll.Models
         public int ServingSize { get; set; }
 
         [JsonPropertyName("ingredients")]
-        public string[] Ingredients { get; set; }
+        public string[] Ingredients { get; set; } = new string[0];
 
         [JsonPropertyName("allergens")]
-        public string[] Allergens { get; set; }
+        public string[] Allergens { get; set; } = new string[0];
 
         [JsonPropertyName("spiciness_level")]
         public string SpicinessLevel { get; set; } = string.Empty;

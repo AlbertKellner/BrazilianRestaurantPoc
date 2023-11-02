@@ -6,9 +6,9 @@ namespace Playground.Application.Features.TableReservation.Command.Create.Reposi
 {
     public class CreateTableReservationRepository : ICreateTableReservationRepository
     {
-        private readonly DigitalMenuInMemoryDatabase _inMemoryDatabase;
+        private readonly DishInMemoryDatabase _inMemoryDatabase;
 
-        public CreateTableReservationRepository(DigitalMenuInMemoryDatabase inMemoryDatabase)
+        public CreateTableReservationRepository(DishInMemoryDatabase inMemoryDatabase)
         {
             _inMemoryDatabase = inMemoryDatabase;
         }

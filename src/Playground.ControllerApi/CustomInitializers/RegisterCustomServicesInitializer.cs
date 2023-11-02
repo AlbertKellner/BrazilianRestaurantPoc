@@ -62,7 +62,7 @@ namespace Microsoft.AspNetCore.Builder
         private static void RegisterCustomDependencies(IServiceCollection services)
         {
             //services.AddTransient<IInitialRespositoryAPI, InitialRespositoryAPI>();
-            services.AddSingleton<DigitalMenuInMemoryDatabase>(DigitalMenuInMemoryDatabase.Instance);
+            services.AddSingleton<DishInMemoryDatabase>(DishInMemoryDatabase.Instance);
         }
 
         private static void RegisterSwagger(IServiceCollection services)

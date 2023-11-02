@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using MediatR;
-using Playground.Application.Features.DigitalMenuItem.Command.Create.Models;
-using Playground.Application.Features.DigitalMenuItem.Command.Create.UseCase;
+using Playground.Application.Features.Dish.Command.Create.Models;
+using Playground.Application.Features.Dish.Command.Create.UseCase;
 //using Playground.Application.Features.ToDoItems.Command.Create.Models;
 //using Playground.Application.Features.ToDoItems.Command.Create.UseCase;
 //using Playground.Application.Features.ToDoItems.Command.Delete.Models;
@@ -45,8 +45,8 @@ namespace Playground.Application.Shared.AutofacModules
             //builder.RegisterAssemblyTypes(typeof(IsCompletedToDoItemCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
             //builder.RegisterAssemblyTypes(typeof(IsCompletedToDoItemUseCaseHandler).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
 
-            builder.RegisterAssemblyTypes(typeof(CreateDigitalMenuItemCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
-            builder.RegisterAssemblyTypes(typeof(CreateDigitalMenuItemUseCaseHandler).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+            builder.RegisterAssemblyTypes(typeof(CreateDishCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
+            builder.RegisterAssemblyTypes(typeof(CreateDishUseCaseHandler).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
         }
     }
 }

@@ -6,9 +6,9 @@ namespace Playground.Application.Features.Dish.Command.Create.Repositories
 {
     public class CreateDishRepository : ICreateDishRepository
     {
-        private readonly DigitalMenuInMemoryDatabase _inMemoryDatabase;
+        private readonly DishInMemoryDatabase _inMemoryDatabase;
 
-        public CreateDishRepository(DigitalMenuInMemoryDatabase inMemoryDatabase)
+        public CreateDishRepository(DishInMemoryDatabase inMemoryDatabase)
         {
             _inMemoryDatabase = inMemoryDatabase;
         }
@@ -19,7 +19,7 @@ namespace Playground.Application.Features.Dish.Command.Create.Repositories
             await Task.Delay(100);
 
             // Add the input to the in-memory database
-            _inMemoryDatabase.AddDish(new DataBaseDish
+            _inMemoryDatabase.AddDishItem(new DataBaseDishItem
             {
                 Id = input.Id,
                 DishName = input.DishName,
