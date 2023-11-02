@@ -11,7 +11,7 @@ namespace Playground.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("digital-menu")]
+    [Route("dish")]
     [Produces("application/json")]
     [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public class DishController : ControllerBase
