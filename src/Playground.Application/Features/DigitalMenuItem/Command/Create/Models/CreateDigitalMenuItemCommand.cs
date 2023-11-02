@@ -26,10 +26,11 @@ namespace Playground.Application.Features.DigitalMenuItem.Command.Create.Models
         {
             var contract = new Contract<Notification>()
                 .Requires()
-                .IsNotNullOrEmpty(Id.ToString(), nameof(Id), $"{nameof(Id)} não pode ser nulo ou vazio")
-                .IsTrue(Guid.TryParse(Id.ToString(), out _), nameof(Id), $"{nameof(Id)} deve ser um GUID válido")
+                .IsNotNullOrEmpty(Id.ToString(), nameof(Id), $"{nameof(Id)} cannot be null or empty")
+                .IsTrue(Guid.TryParse(Id.ToString(), out _), nameof(Id), $"{nameof(Id)} must be a valid GUID")
                 .IsNotNullOrWhiteSpace(DishName, nameof(DishName), $"{nameof(DishName)} cannot be empty or whitespace only")
                 .IsGreaterThan(Price, 0, nameof(Price), $"{nameof(Price)} must be greater than 0");
+
 
             return GenerateErrorList(contract);
         }

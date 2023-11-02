@@ -32,8 +32,8 @@ namespace Playground.Application.Features.TableReservation.Command.Create.Models
         {
             var contract = new Contract<Notification>()
                 .Requires()
-                .IsNotNullOrEmpty(ReservationId.ToString(), nameof(ReservationId), $"{nameof(ReservationId)} não pode ser nulo ou vazio")
-                .IsTrue(Guid.TryParse(ReservationId.ToString(), out _), nameof(ReservationId), $"{nameof(ReservationId)} deve ser um GUID válido")
+                .IsNotNullOrEmpty(ReservationId.ToString(), nameof(ReservationId), $"{nameof(ReservationId)} cannot be null or empty")
+                .IsTrue(Guid.TryParse(ReservationId.ToString(), out _), nameof(ReservationId), $"{nameof(ReservationId)} must be a valid GUID")
                 .IsNotNullOrWhiteSpace(CustomerName, nameof(CustomerName), $"{nameof(CustomerName)} cannot be empty or whitespace only")
                 .IsNotNullOrWhiteSpace(CustomerContact, nameof(CustomerContact), $"{nameof(CustomerContact)} cannot be empty or whitespace only")
                 .IsGreaterThan(TableNumber, 0, nameof(TableNumber), $"{nameof(TableNumber)} must be greater than 0")

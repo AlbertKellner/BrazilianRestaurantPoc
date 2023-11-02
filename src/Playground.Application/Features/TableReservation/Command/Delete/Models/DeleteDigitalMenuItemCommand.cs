@@ -26,8 +26,8 @@ namespace Playground.Application.Features.TableReservation.Command.Delete.Models
         {
             var contract = new Contract<Notification>()
                 .Requires()
-                .IsNotNullOrEmpty(ReservationId.ToString(), nameof(ReservationId), $"{nameof(ReservationId)} não pode ser nulo ou vazio")
-                .IsTrue(Guid.TryParse(ReservationId.ToString(), out _), nameof(ReservationId), $"{nameof(ReservationId)} deve ser um GUID válido");
+                .IsNotNullOrEmpty(ReservationId.ToString(), nameof(ReservationId), $"{nameof(ReservationId)} cannot be null or empty")
+                .IsTrue(Guid.TryParse(ReservationId.ToString(), out _), nameof(ReservationId), $"{nameof(ReservationId)} must be a valid GUID");
 
             return GenerateErrorList(contract);
         }

@@ -21,8 +21,8 @@ namespace Playground.Application.Features.DigitalMenuItem.Query.GetById.Models
         {
             var contract = new Contract<Notification>()
                 .Requires()
-                .IsNotNullOrEmpty(Id.ToString(), nameof(Id), $"{nameof(Id)} não pode ser nulo ou vazio")
-                .IsTrue(Guid.TryParse(Id.ToString(), out _), nameof(Id), $"{nameof(Id)} deve ser um GUID válido");
+                .IsNotNullOrEmpty(Id.ToString(), nameof(Id), $"{nameof(Id)} cannot be null or empty")
+                .IsTrue(Guid.TryParse(Id.ToString(), out _), nameof(Id), $"{nameof(Id)} must be a valid GUID");
 
             return GenerateErrorList(contract);
         }
