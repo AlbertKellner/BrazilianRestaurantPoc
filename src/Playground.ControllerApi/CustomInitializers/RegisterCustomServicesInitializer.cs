@@ -1,6 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
+using Playground.Application.Features.Dish.Command.Create.Interface;
+using Playground.Application.Features.Dish.Command.Create.Models;
+using Playground.Application.Features.Dish.Command.Create.Repositories;
+using Playground.Application.Features.Dish.Command.Create.UseCase;
+using Playground.Application.Features.Dish.Command.Delete.Models;
+using Playground.Application.Features.Dish.Command.Delete.UseCase;
+using Playground.Application.Features.Dish.Command.Update.Models;
+using Playground.Application.Features.Dish.Command.Update.UseCase;
+using Playground.Application.Features.Dish.Query.GetAll.Models;
+using Playground.Application.Features.Dish.Query.GetAll.UseCase;
+using Playground.Application.Features.Dish.Query.GetById.Models;
+using Playground.Application.Features.Dish.Query.GetById.UseCase;
 using Playground.Application.Infrastructure.Filter;
 using Playground.Application.Infrastructure.Handlers;
 using Playground.Application.Shared.InMemoryDatabase;
@@ -22,6 +35,8 @@ namespace Microsoft.AspNetCore.Builder
             RegisterAddApiVersioning(services);
 
             RegisterAddVersionedApiExplorer(services);
+
+            ConfigureMediatR(services);
 
             services.AddMvc().AddControllersAsServices();
 
@@ -54,14 +69,31 @@ namespace Microsoft.AspNetCore.Builder
         public static void ConfigureMediatR(IServiceCollection services)
         {
             services.AddMediatR(cfg =>
-             {
-                 cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
-             });
+            {
+                cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
+            });
+
+            RegisterRequestHandlers(services);
+            
+            RegisterInterfaces(services);
+        }
+
+        private static void RegisterRequestHandlers(IServiceCollection services)
+        {
+            services.AddTransient<IRequestHandler<CreateDishCommand, CreateDishOutput>, CreateDishUseCaseHandler>();
+            services.AddTransient<IRequestHandler<DeleteDishCommand, DeleteDishOutput>, DeleteDishUseCaseHandler>();
+            services.AddTransient<IRequestHandler<UpdateDishCommand, UpdateDishOutput>, UpdateDishUseCaseHandler>();
+            services.AddTransient<IRequestHandler<UpdateDishCommand, UpdateDishOutput>, UpdateDishUseCaseHandler>();
+            services.AddTransient<IRequestHandler<GetAllDishQuery, IEnumerable<GetAllDishOutput>>, GetAllDishUseCaseHandler>();
+            services.AddTransient<IRequestHandler<GetByIdDishQuery, GetByIdDishOutput>, GetByIdDishUseCaseHandler>();
+        }
+        private static void RegisterInterfaces(IServiceCollection services)
+        {
+            services.AddScoped<ICreateDishRepository, CreateDishRepository>();
         }
 
         private static void RegisterCustomDependencies(IServiceCollection services)
         {
-            //services.AddTransient<IInitialRespositoryAPI, InitialRespositoryAPI>();
             services.AddSingleton<DishInMemoryDatabase>(DishInMemoryDatabase.Instance);
         }
 

@@ -3,12 +3,7 @@ using Playground.Application.Shared.AutofacModules;
 using Autofac.Extensions.DependencyInjection;
 using Serilog;
 using Playground.Application.Shared;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.Options;
-using MySqlConnector;
 using Serilog.Events;
-using Autofac.Core;
-using Playground.Controllers;
 
 namespace Microsoft.AspNetCore.Builder
 {
@@ -31,7 +26,6 @@ namespace Microsoft.AspNetCore.Builder
                 {
                     builder.RegisterModule(new HandlersModule());
                     builder.RegisterModule(new ApiModule());
-                    //RegisterDependencies(builder);
                 }));
 
         private static void LoadEnvironmentOptions(WebApplicationBuilder builder)
@@ -41,12 +35,6 @@ namespace Microsoft.AspNetCore.Builder
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-
-            //var settings = new ExternalApiOptions();
-            //builder.Configuration.GetSection("ExternalApiOptions").Bind(settings);
-            //builder.Configuration.GetSection("ConnectionStrings").Bind(settings);
-
-            //builder.Services.AddSingleton(settings);
         }
 
         private static void SerilogConfig(WebApplicationBuilder builder, IWebHostEnvironment environment)
@@ -71,22 +59,5 @@ namespace Microsoft.AspNetCore.Builder
 
             Log.Logger = loggerConfiguration.CreateLogger();
         }
-
-        //private static void RegisterDependencies(ContainerBuilder builder)
-        //{
-        //    ThreadPool.SetMinThreads(50, 50);
-
-        //    builder.Register(container =>
-        //    {
-        //        var memoryCache = container.Resolve<IMemoryCache>();
-        //        var databaseOptions = container.Resolve<IOptions<ConnectionstringsOptions>>();
-        //        var logger = container.Resolve<ILogger<GetAllCountryRepository>>();
-
-        //        //var connection = new MySqlConnection(databaseOptions.Value.MySqlConnectionString);
-        //        var connection = new MySqlConnection("server=localhost;user id=admin;password=123456;database=world;");
-
-        //        return new GetAllCountryRepository(connection, memoryCache, logger);
-        //    }).As<IGetAllCountryRepository>();
-        //}
     }
 }
