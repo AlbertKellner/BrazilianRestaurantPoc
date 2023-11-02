@@ -21,19 +21,19 @@
     <Folder Include="Features\TableReservation\Query\GetById\Entities\" />
     <Folder Include="Features\TableReservation\Query\GetById\Interface\" />
     <Folder Include="Features\TableReservation\Query\GetById\Repositories\Script\" />
-    <Folder Include="Features\DigitalMenuItem\Command\Create\Entities\" />
-    <Folder Include="Features\DigitalMenuItem\Command\Delete\Entities\" />
-    <Folder Include="Features\DigitalMenuItem\Command\Delete\Interface\" />
-    <Folder Include="Features\DigitalMenuItem\Command\Delete\Repositories\Script\" />
-    <Folder Include="Features\DigitalMenuItem\Command\Update\Entities\" />
-    <Folder Include="Features\DigitalMenuItem\Command\Update\Interface\" />
-    <Folder Include="Features\DigitalMenuItem\Command\Update\Repositories\Script\" />
-    <Folder Include="Features\DigitalMenuItem\Query\GetAll\Entities\" />
-    <Folder Include="Features\DigitalMenuItem\Query\GetAll\Interface\" />
-    <Folder Include="Features\DigitalMenuItem\Query\GetAll\Repositories\Script\" />
-    <Folder Include="Features\DigitalMenuItem\Query\GetById\Entities\" />
-    <Folder Include="Features\DigitalMenuItem\Query\GetById\Interface\" />
-    <Folder Include="Features\DigitalMenuItem\Query\GetById\Repositories\Script\" />
+    <Folder Include="Features\Dish\Command\Create\Entities\" />
+    <Folder Include="Features\Dish\Command\Delete\Entities\" />
+    <Folder Include="Features\Dish\Command\Delete\Interface\" />
+    <Folder Include="Features\Dish\Command\Delete\Repositories\Script\" />
+    <Folder Include="Features\Dish\Command\Update\Entities\" />
+    <Folder Include="Features\Dish\Command\Update\Interface\" />
+    <Folder Include="Features\Dish\Command\Update\Repositories\Script\" />
+    <Folder Include="Features\Dish\Query\GetAll\Entities\" />
+    <Folder Include="Features\Dish\Query\GetAll\Interface\" />
+    <Folder Include="Features\Dish\Query\GetAll\Repositories\Script\" />
+    <Folder Include="Features\Dish\Query\GetById\Entities\" />
+    <Folder Include="Features\Dish\Query\GetById\Interface\" />
+    <Folder Include="Features\Dish\Query\GetById\Repositories\Script\" />
     <Folder Include="Shared\Factories\" />
   </ItemGroup>
 

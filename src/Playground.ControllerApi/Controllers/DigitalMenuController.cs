@@ -1,10 +1,10 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Playground.Application.Features.DigitalMenuItem.Command.Create.Models;
-using Playground.Application.Features.DigitalMenuItem.Command.Delete.Models;
-using Playground.Application.Features.DigitalMenuItem.Command.Update.Models;
-using Playground.Application.Features.DigitalMenuItem.Query.GetAll.Models;
-using Playground.Application.Features.DigitalMenuItem.Query.GetById.Models;
+using Playground.Application.Features.Dish.Command.Create.Models;
+using Playground.Application.Features.Dish.Command.Delete.Models;
+using Playground.Application.Features.Dish.Command.Update.Models;
+using Playground.Application.Features.Dish.Query.GetAll.Models;
+using Playground.Application.Features.Dish.Query.GetById.Models;
 using System.Net;
 
 namespace Playground.Controllers
@@ -29,9 +29,9 @@ namespace Playground.Controllers
 
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(CreateDigitalMenuItemOutput), (int)HttpStatusCode.Created)]
+        [ProducesResponseType(typeof(CreateDishOutput), (int)HttpStatusCode.Created)]
         public async Task<IActionResult> CreateAsync(
-            [FromBody] CreateDigitalMenuItemCommand input,
+            [FromBody] CreateDishCommand input,
             CancellationToken cancellationToken)
         {
             if (input.IsInvalid())
@@ -54,10 +54,10 @@ namespace Playground.Controllers
         [HttpGet("{id:Guid}", Name = "GetById")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(GetByIdDigitalMenuItemOutput), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(GetByIdDishOutput), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetByIdAsync(
             [FromRoute] Guid id,
-            [FromQuery] GetByIdDigitalMenuItemQuery input,
+            [FromQuery] GetByIdDishQuery input,
             CancellationToken cancellationToken)
         {
             input.SetId(id);
@@ -85,11 +85,11 @@ namespace Playground.Controllers
 
         [HttpGet()]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
-        [ProducesResponseType(typeof(GetAllDigitalMenuItemOutput), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(GetAllDishOutput), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetAllAsync(
             CancellationToken cancellationToken)
         {
-            var output = await _mediator.Send(new GetAllDigitalMenuItemQuery(), cancellationToken);
+            var output = await _mediator.Send(new GetAllDishQuery(), cancellationToken);
 
             if (output.Any())
             {
@@ -105,7 +105,7 @@ namespace Playground.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> UpdateAsync(
             [FromRoute] Guid id,
-            [FromBody] UpdateDigitalMenuItemCommand input,
+            [FromBody] UpdateDishCommand input,
             CancellationToken cancellationToken)
         {
             input.SetId(id);
@@ -139,7 +139,7 @@ namespace Playground.Controllers
             [FromRoute] Guid id,
             CancellationToken cancellationToken)
         {
-            var input = new DeleteDigitalMenuItemCommand(id);
+            var input = new DeleteDishCommand(id);
 
             if (input.IsInvalid())
             {
