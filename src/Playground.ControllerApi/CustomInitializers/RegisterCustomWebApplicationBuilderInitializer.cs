@@ -3,10 +3,8 @@ using Playground.Application.Shared.AutofacModules;
 using Autofac.Extensions.DependencyInjection;
 using Serilog;
 using Playground.Application.Shared;
-using Playground.Application.Infrastructure.Configuration;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
-using Playground.Application.Shared.Domain;
 using MySqlConnector;
 using Serilog.Events;
 using Autofac.Core;
@@ -44,11 +42,11 @@ namespace Microsoft.AspNetCore.Builder
                 .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
 
-            var settings = new ExternalApiOptions();
-            builder.Configuration.GetSection("ExternalApiOptions").Bind(settings);
-            builder.Configuration.GetSection("ConnectionStrings").Bind(settings);
+            //var settings = new ExternalApiOptions();
+            //builder.Configuration.GetSection("ExternalApiOptions").Bind(settings);
+            //builder.Configuration.GetSection("ConnectionStrings").Bind(settings);
 
-            builder.Services.AddSingleton(settings);
+            //builder.Services.AddSingleton(settings);
         }
 
         private static void SerilogConfig(WebApplicationBuilder builder, IWebHostEnvironment environment)

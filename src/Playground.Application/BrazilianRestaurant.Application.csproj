@@ -34,7 +34,6 @@
     <Folder Include="Features\Dish\Query\GetById\Entities\" />
     <Folder Include="Features\Dish\Query\GetById\Interface\" />
     <Folder Include="Features\Dish\Query\GetById\Repositories\Script\" />
-    <Folder Include="Shared\Factories\" />
   </ItemGroup>
 
   <ItemGroup>

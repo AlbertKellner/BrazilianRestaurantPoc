@@ -1,6 +1,4 @@
 ﻿using Autofac;
-using Playground.Application.Shared.ExternalServices.Interfaces;
-using Playground.Application.Shared.ExternalServices;
 
 namespace Playground.Application.Shared.AutofacModules
 {
@@ -8,7 +6,7 @@ namespace Playground.Application.Shared.AutofacModules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<PokemonApi>().As<IPokemonApi>();
+            //builder.RegisterType<PokemonApi>().As<IPokemonApi>();
         }
     }
 }
