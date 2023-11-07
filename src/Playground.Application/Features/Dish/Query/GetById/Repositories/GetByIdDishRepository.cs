@@ -26,18 +26,8 @@ namespace Playground.Application.Features.Dish.Command.GetById.Repositories
             {
                 Id = dishItem.Id,
                 DishName = dishItem.DishName,
-                Description = dishItem.Description,
                 Price = dishItem.Price,
-                Category = dishItem.Category,
-                CookingTime = dishItem.CookingTime,
-                ServingSize = dishItem.ServingSize,
-                Ingredients = dishItem.Ingredients,
-                Allergens = dishItem.Allergens,
-                SpicinessLevel = dishItem.SpicinessLevel,
-                IsAvailable = dishItem.IsAvailable,
-                ImageUrl = dishItem.ImageUrl,
-                ChefRecommendation = dishItem.ChefRecommendation,
-                Special = dishItem.Special
+                ChefRecommendation = dishItem.ChefRecommendation
             };
 
             return await Task.FromResult(dishOutput);

@@ -5,16 +5,16 @@ using System.Text.Json.Serialization;
 using Playground.Application.Shared.Features.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Playground.Application.Features.Dish.Command.Update.Models
+namespace Playground.Application.Features.Order.Command.Update.Models
 {
-    public class UpdateDishCommand : ValidatableInputBase, IRequest<UpdateDishOutput>
+    public class UpdateOrderCommand : ValidatableInputBase, IRequest<UpdateOrderOutput>
     {
         [JsonIgnore]
         [BindNever]
         public Guid Id { get; set; }
 
-        [JsonPropertyName("dish_name")]
-        public string DishName { get; set; } = string.Empty;
+        [JsonPropertyName("Order_name")]
+        public string OrderName { get; set; } = string.Empty;
 
         [JsonPropertyName("price")]
         public decimal Price { get; set; }
@@ -28,7 +28,7 @@ namespace Playground.Application.Features.Dish.Command.Update.Models
                 .Requires()
                 .IsNotNullOrEmpty(Id.ToString(), nameof(Id), $"{nameof(Id)} cannot be null or empty")
                 .IsTrue(Guid.TryParse(Id.ToString(), out _), nameof(Id), $"{nameof(Id)} must be a valid GUID")
-                .IsNotNullOrWhiteSpace(DishName, nameof(DishName), $"{nameof(DishName)} cannot be empty or just white spaces")
+                .IsNotNullOrWhiteSpace(OrderName, nameof(OrderName), $"{nameof(OrderName)} cannot be empty or just white spaces")
                 .IsGreaterThan(Price, 0, nameof(Price), $"{nameof(Price)} must be greater than 0");
 
             return GenerateErrorList(contract);

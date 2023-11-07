@@ -1,20 +1,26 @@
-﻿using Flunt.Notifications;
-using Flunt.Validations;
-using MediatR;
+﻿using MediatR;
 using System.Text.Json.Serialization;
+using Flunt.Notifications;
+using Flunt.Validations;
 using Playground.Application.Shared.Features.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Playground.Application.Features.Dish.Command.Update.Models
+namespace Playground.Application.Features.Order.Command.Create.Models
 {
-    public class UpdateDishCommand : ValidatableInputBase, IRequest<UpdateDishOutput>
+    public class CreateOrderCommand : ValidatableInputBase, IRequest<CreateOrderOutput>
     {
+        public CreateOrderCommand()
+        {
+            Id = Guid.NewGuid();
+        }
+
         [JsonIgnore]
         [BindNever]
-        public Guid Id { get; set; }
+        [JsonPropertyName("id")]
+        public Guid Id { get; private set; }
 
-        [JsonPropertyName("dish_name")]
-        public string DishName { get; set; } = string.Empty;
+        [JsonPropertyName("Order_name")]
+        public string OrderName { get; set; } = string.Empty;
 
         [JsonPropertyName("price")]
         public decimal Price { get; set; }
@@ -28,12 +34,10 @@ namespace Playground.Application.Features.Dish.Command.Update.Models
                 .Requires()
                 .IsNotNullOrEmpty(Id.ToString(), nameof(Id), $"{nameof(Id)} cannot be null or empty")
                 .IsTrue(Guid.TryParse(Id.ToString(), out _), nameof(Id), $"{nameof(Id)} must be a valid GUID")
-                .IsNotNullOrWhiteSpace(DishName, nameof(DishName), $"{nameof(DishName)} cannot be empty or just white spaces")
+                .IsNotNullOrWhiteSpace(OrderName, nameof(OrderName), $"{nameof(OrderName)} cannot be empty or whitespace only")
                 .IsGreaterThan(Price, 0, nameof(Price), $"{nameof(Price)} must be greater than 0");
 
             return GenerateErrorList(contract);
         }
-
-        public void SetId(Guid id) => Id = id;
     }
 }

@@ -20,18 +20,8 @@ namespace Playground.Application.Features.Dish.Command.GetAll.Repositories
                 {
                     Id = dish.Id,
                     DishName = dish.DishName,
-                    Description = dish.Description,
                     Price = dish.Price,
-                    Category = dish.Category,
-                    CookingTime = dish.CookingTime,
-                    ServingSize = dish.ServingSize,
-                    Ingredients = dish.Ingredients.ToArray(),
-                    Allergens = dish.Allergens.ToArray(),
-                    SpicinessLevel = dish.SpicinessLevel,
-                    IsAvailable = dish.IsAvailable,
-                    ImageUrl = dish.ImageUrl,
-                    ChefRecommendation = dish.ChefRecommendation,
-                    Special = dish.Special
+                    ChefRecommendation = dish.ChefRecommendation
                 })
                 .ToList();
 

@@ -1,10 +1,9 @@
 ﻿namespace BrazilianRestaurant.Application.Shared.InMemoryDatabase.DataBaseItem
 {
-    public class DataBaseDishItem
+    public class DataBaseOrderItem
     {
         public Guid Id { get; set; }
-        public string DishName { get; set; } = string.Empty;
+        public List<Guid> DishesIds { get; set; } = new();
         public decimal Price { get; set; }
-        public bool ChefRecommendation { get; set; }
     }
 }

@@ -1,14 +1,16 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
-namespace Playground.Application.Features.Dish.Query.GetAll.Models
+namespace Playground.Application.Features.Order.Query.GetById.Models
 {
-    public class GetAllDishOutput
+    public class GetByIdOrderOutput
     {
         [JsonPropertyName("id")]
         public Guid Id { get; set; }
 
-        [JsonPropertyName("dish_name")]
-        public string DishName { get; set; } = string.Empty;
+        [JsonPropertyName("Order_name")]
+        public string OrderName { get; set; } = string.Empty;
 
         [JsonPropertyName("price")]
         public decimal Price { get; set; }

@@ -20,18 +20,8 @@ namespace Playground.Application.Features.Dish.Command.Update.Repositories
             {
                 Id = input.Id,
                 DishName = input.DishName,
-                Description = input.Description,
                 Price = input.Price,
-                Category = input.Category,
-                CookingTime = input.CookingTime,
-                ServingSize = input.ServingSize,
-                Ingredients = input.Ingredients,
-                Allergens = input.Allergens,
-                SpicinessLevel = input.SpicinessLevel,
-                IsAvailable = input.IsAvailable,
-                ImageUrl = input.ImageUrl,
                 ChefRecommendation = input.ChefRecommendation,
-                Special = input.Special
             };
 
             _inMemoryDatabase.UpdateDishItem(databaseItem);
