@@ -12,7 +12,21 @@
         // Substitui dois ou mais espaços consecutivos por um único espaço
         this.value = this.value.replace(/\s{2,}/g, ' ');
     });
+
+    setMinReservationDate();
 });
+
+function setMinReservationDate() {
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1); // Adiciona 1 dia à data atual para obter o dia de amanhã
+
+    var day = tomorrow.getDate().toString().padStart(2, '0');
+    var month = (tomorrow.getMonth() + 1).toString().padStart(2, '0'); // getMonth retorna mês de 0-11
+    var year = tomorrow.getFullYear();
+
+    var minDate = `${year}-${month}-${day}T00:00`;
+    document.getElementById('reservationDateTime').setAttribute('min', minDate);
+}
 
 function sendOrderAndReserve(event) {
     event.preventDefault();
