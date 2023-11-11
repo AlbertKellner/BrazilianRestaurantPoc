@@ -80,9 +80,9 @@ function reserveTable(event, orderResponse) {
     const urlParams = new URLSearchParams(window.location.search);
     const tableId = urlParams.get('tableId') || Math.floor(Math.random() * 10) + 1; // Adicionado para ler da query string
 
-    const reservationDateTime = document.getElementById('reservationDateTime').value;
-    const customerName = document.getElementById('customerName').value;
-    const customerContact = document.getElementById('customerContact').value;
+    const reservationDateTime = '2000-01-01T12:00';
+    const customerName = 'none';
+    const customerContact = 'none';
     const orderId = orderResponse ? orderResponse.order_id : null;
     const reservationCode = (Math.floor(Math.random() * 700) + 300).toString();
 
