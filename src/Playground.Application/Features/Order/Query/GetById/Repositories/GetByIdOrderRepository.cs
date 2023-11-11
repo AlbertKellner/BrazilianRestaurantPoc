@@ -27,7 +27,8 @@ namespace Playground.Application.Features.Order.Command.GetById.Repositories
             {
                 Id = input.Id,
                 Price = OrderItem.Price,
-                DishesIds = OrderItem.DishesIds.ToList()
+                DishesIds = OrderItem.DishesIds.ToList(),
+                OrderCode = OrderItem.OrderCode
             };
 
             return await Task.FromResult(OrderOutput);

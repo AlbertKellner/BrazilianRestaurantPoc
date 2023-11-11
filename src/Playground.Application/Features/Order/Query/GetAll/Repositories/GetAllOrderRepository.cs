@@ -20,7 +20,8 @@ namespace Playground.Application.Features.Order.Command.GetAll.Repositories
                             {
                                 Id = order.Id,
                                 DishesIds = order.DishesIds,
-                                Price = order.Price
+                                Price = order.Price,
+                                OrderCode = order.OrderCode
                             })
                             .ToList();
 

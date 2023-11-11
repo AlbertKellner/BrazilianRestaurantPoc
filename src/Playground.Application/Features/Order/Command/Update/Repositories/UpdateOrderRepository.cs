@@ -20,7 +20,8 @@ namespace Playground.Application.Features.Order.Command.Update.Repositories
             {
                 Id = input.Id,
                 DishesIds = input.DishesIds,
-                Price = input.Price
+                Price = input.Price,
+                OrderCode = input.OrderCode
             };
 
             _inMemoryDatabase.UpdateOrderItem(databaseItem);

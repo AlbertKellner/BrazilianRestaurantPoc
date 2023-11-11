@@ -15,6 +15,9 @@ namespace Playground.Application.Features.Order.Query.GetById.Models
         [JsonPropertyName("price")]
         public decimal Price { get; set; }
 
+        [JsonPropertyName("order_code")]
+        public string OrderCode { get; set; } = string.Empty;
+
         public bool IsValid() => Id != Guid.Empty;
     }
 }
