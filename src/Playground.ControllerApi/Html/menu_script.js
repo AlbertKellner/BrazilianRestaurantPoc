@@ -66,9 +66,13 @@ function sendOrder() {
         const dishId = listItem.querySelector('input[type=number]').id.split('_')[1];
         const quantity = listItem.querySelector('input[type=number]').value;
 
+        const rawOrderCode = Math.floor(Math.random() * (99999 - 11111 + 1)) + 11111;
+        const orderCode = rawOrderCode.toLocaleString('pt-BR');
+
         for (let i = 0; i < quantity; i++) {
             order.dishes_ids.push(dishId);
         }
+        order.order_code = orderCode
     });
 
     if (order.dishes_ids.length === 0) {
@@ -101,16 +105,14 @@ function reserveTable(event, orderResponse) {
     const customerContact = 'none';
     const orderId = orderResponse ? orderResponse.order_id : null;
 
-    const rawReservationCode = Math.floor(Math.random() * (99999 - 11111 + 1)) + 11111;
-    const reservationCode = rawReservationCode.toLocaleString('pt-BR');
+
 
     const reservationData = {
         reservation_date_time: reservationDateTime,
         table_id: tableId,
         customer_name: customerName,
         customer_contact: customerContact,
-        order_id: orderId,
-        reservation_code: reservationCode
+        order_id: orderId
     };
 
     fetch('https://localhost:7066/table-reservation', {

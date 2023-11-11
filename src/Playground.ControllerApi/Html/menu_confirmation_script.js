@@ -26,8 +26,6 @@ function fetchTableReservation(reservationId) {
         })
         .then(data => {
             console.log('Reservation details:', data);
-            
-            document.getElementById('reservationCode').innerHTML = data.reservation_code;
         })
         .catch(error => console.error('Error fetching reservation:', error));
 }
@@ -52,6 +50,8 @@ function fetchOrderDetails(orderId) {
                 totalCost = results.reduce((sum, value) => sum + value, 0);
                 document.getElementById('totalCost').innerHTML = totalCost.toFixed(2);
             });
+
+            document.getElementById('reservationCode').innerHTML = data.order_code;
         })
         .catch(error => console.error('Error fetching order:', error));
 }

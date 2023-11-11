@@ -32,6 +32,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Html\orders_list_script.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Html\orders_list.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Html\menu_confirmation.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
