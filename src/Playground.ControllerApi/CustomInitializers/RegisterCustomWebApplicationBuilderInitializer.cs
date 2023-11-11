@@ -24,7 +24,7 @@ namespace Microsoft.AspNetCore.Builder
             builder.Host.UseServiceProviderFactory<ContainerBuilder>(new AutofacServiceProviderFactory())
                 .ConfigureContainer((Action<ContainerBuilder>)(builder =>
                 {
-                    builder.RegisterModule(new HandlersModule());
+                    //builder.RegisterModule(new HandlersModule());
                     builder.RegisterModule(new ApiModule());
                 }));
 

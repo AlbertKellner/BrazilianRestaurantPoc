@@ -23,6 +23,8 @@ namespace Playground.Application.Features.Order.Command.Create.Models
         [JsonPropertyName("dishes_ids")]
         public List<Guid> DishesIds { get; set; }
 
+        [JsonIgnore]
+        [BindNever]
         [JsonPropertyName("price")]
         public decimal Price { get; set; }
 
@@ -32,8 +34,7 @@ namespace Playground.Application.Features.Order.Command.Create.Models
                 .Requires()
                 .IsNotNullOrEmpty(Id.ToString(), nameof(Id), $"{nameof(Id)} cannot be null or empty")
                 .IsTrue(Guid.TryParse(Id.ToString(), out _), nameof(Id), $"{nameof(Id)} must be a valid GUID")
-                .IsNotNull(DishesIds, nameof(DishesIds), $"{nameof(DishesIds)} cannot be null")
-                .IsGreaterThan(Price, 0, nameof(Price), $"{nameof(Price)} must be greater than 0");
+                .IsNotNull(DishesIds, nameof(DishesIds), $"{nameof(DishesIds)} cannot be null");
 
             return GenerateErrorList(contract);
         }

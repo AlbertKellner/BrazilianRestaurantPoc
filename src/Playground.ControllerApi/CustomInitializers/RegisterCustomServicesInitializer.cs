@@ -22,6 +22,46 @@ using Playground.Application.Features.Dish.Query.GetAll.Models;
 using Playground.Application.Features.Dish.Query.GetAll.UseCase;
 using Playground.Application.Features.Dish.Query.GetById.Models;
 using Playground.Application.Features.Dish.Query.GetById.UseCase;
+using Playground.Application.Features.Order.Command.Create.Interface;
+using Playground.Application.Features.Order.Command.Create.Models;
+using Playground.Application.Features.Order.Command.Create.Repositories;
+using Playground.Application.Features.Order.Command.Create.UseCase;
+using Playground.Application.Features.Order.Command.Delete.Interface;
+using Playground.Application.Features.Order.Command.Delete.Models;
+using Playground.Application.Features.Order.Command.Delete.Repositories;
+using Playground.Application.Features.Order.Command.Delete.UseCase;
+using Playground.Application.Features.Order.Command.GetAll.Interface;
+using Playground.Application.Features.Order.Command.GetAll.Repositories;
+using Playground.Application.Features.Order.Command.GetById.Interface;
+using Playground.Application.Features.Order.Command.GetById.Repositories;
+using Playground.Application.Features.Order.Command.Update.Interface;
+using Playground.Application.Features.Order.Command.Update.Models;
+using Playground.Application.Features.Order.Command.Update.Repositories;
+using Playground.Application.Features.Order.Command.Update.UseCase;
+using Playground.Application.Features.Order.Query.GetAll.Models;
+using Playground.Application.Features.Order.Query.GetAll.UseCase;
+using Playground.Application.Features.Order.Query.GetById.Models;
+using Playground.Application.Features.Order.Query.GetById.UseCase;
+using Playground.Application.Features.TableReservation.Command.Create.Interface;
+using Playground.Application.Features.TableReservation.Command.Create.Models;
+using Playground.Application.Features.TableReservation.Command.Create.Repositories;
+using Playground.Application.Features.TableReservation.Command.Create.UseCase;
+using Playground.Application.Features.TableReservation.Command.Delete.Interface;
+using Playground.Application.Features.TableReservation.Command.Delete.Models;
+using Playground.Application.Features.TableReservation.Command.Delete.Repositories;
+using Playground.Application.Features.TableReservation.Command.Delete.UseCase;
+using Playground.Application.Features.TableReservation.Command.GetAll.Interface;
+using Playground.Application.Features.TableReservation.Command.GetAll.Repositories;
+using Playground.Application.Features.TableReservation.Command.GetById.Interface;
+using Playground.Application.Features.TableReservation.Command.GetById.Repositories;
+using Playground.Application.Features.TableReservation.Command.Update.Interface;
+using Playground.Application.Features.TableReservation.Command.Update.Models;
+using Playground.Application.Features.TableReservation.Command.Update.Repositories;
+using Playground.Application.Features.TableReservation.Command.Update.UseCase;
+using Playground.Application.Features.TableReservation.Query.GetAll.Models;
+using Playground.Application.Features.TableReservation.Query.GetAll.UseCase;
+using Playground.Application.Features.TableReservation.Query.GetById.Models;
+using Playground.Application.Features.TableReservation.Query.GetById.UseCase;
 using Playground.Application.Infrastructure.Filter;
 using Playground.Application.Infrastructure.Handlers;
 using Playground.Application.Shared.InMemoryDatabase;
@@ -53,7 +93,7 @@ namespace Microsoft.AspNetCore.Builder
             services.AddControllers(options =>
             {
                 options.Filters.Add(typeof(LogActionFilter));
-                options.Filters.Add<HttpGlobalExceptionFilter>();
+                //options.Filters.Add<HttpGlobalExceptionFilter>();
 
                 AddCacheProfile(options, durationInSeconds: 1, ResponseCacheProfile.For1Second);
                 AddCacheProfile(options, durationInSeconds: 5, ResponseCacheProfile.For5Seconds);
@@ -93,7 +133,20 @@ namespace Microsoft.AspNetCore.Builder
             services.AddTransient<IRequestHandler<UpdateDishCommand, UpdateDishOutput>, UpdateDishUseCaseHandler>();
             services.AddTransient<IRequestHandler<GetAllDishQuery, IEnumerable<GetAllDishOutput>>, GetAllDishUseCaseHandler>();
             services.AddTransient<IRequestHandler<GetByIdDishQuery, GetByIdDishOutput>, GetByIdDishUseCaseHandler>();
+
+            services.AddTransient<IRequestHandler<CreateOrderCommand, CreateOrderOutput>, CreateOrderUseCaseHandler>();
+            services.AddTransient<IRequestHandler<DeleteOrderCommand, DeleteOrderOutput>, DeleteOrderUseCaseHandler>();
+            services.AddTransient<IRequestHandler<UpdateOrderCommand, UpdateOrderOutput>, UpdateOrderUseCaseHandler>();
+            services.AddTransient<IRequestHandler<GetAllOrderQuery, IEnumerable<GetAllOrderOutput>>, GetAllOrderUseCaseHandler>();
+            services.AddTransient<IRequestHandler<GetByIdOrderQuery, GetByIdOrderOutput>, GetByIdOrderUseCaseHandler>();
+
+            services.AddTransient<IRequestHandler<CreateTableReservationCommand, CreateTableReservationOutput>, CreateTableReservationUseCaseHandler>();
+            services.AddTransient<IRequestHandler<DeleteTableReservationCommand, DeleteTableReservationOutput>, DeleteTableReservationUseCaseHandler>();
+            services.AddTransient<IRequestHandler<UpdateTableReservationCommand, UpdateTableReservationOutput>, UpdateTableReservationUseCaseHandler>();
+            services.AddTransient<IRequestHandler<GetAllTableReservationQuery, IEnumerable<GetAllTableReservationOutput>>, GetAllTableReservationUseCaseHandler>();
+            services.AddTransient<IRequestHandler<GetByIdTableReservationQuery, GetByIdTableReservationOutput>, GetByIdTableReservationUseCaseHandler>();
         }
+
         private static void RegisterInterfaces(IServiceCollection services)
         {
             services.AddScoped<ICreateDishRepository, CreateDishRepository>();
@@ -101,11 +154,25 @@ namespace Microsoft.AspNetCore.Builder
             services.AddScoped<IUpdateDishRepository, UpdateDishRepository>();
             services.AddScoped<IGetAllDishRepository, GetAllDishRepository>();
             services.AddScoped<IGetByIdDishRepository, GetByIdDishRepository>();
+
+            services.AddScoped<ICreateOrderRepository, CreateOrderRepository>();
+            services.AddScoped<IDeleteOrderRepository, DeleteOrderRepository>();
+            services.AddScoped<IUpdateOrderRepository, UpdateOrderRepository>();
+            services.AddScoped<IGetAllOrderRepository, GetAllOrderRepository>();
+            services.AddScoped<IGetByIdOrderRepository, GetByIdOrderRepository>();
+
+            services.AddScoped<ICreateTableReservationRepository, CreateTableReservationRepository>();
+            services.AddScoped<IDeleteTableReservationRepository, DeleteTableReservationRepository>();
+            services.AddScoped<IUpdateTableReservationRepository, UpdateTableReservationRepository>();
+            services.AddScoped<IGetAllTableReservationRepository, GetAllTableReservationRepository>();
+            services.AddScoped<IGetByIdTableReservationRepository, GetByIdTableReservationRepository>();
         }
 
         private static void RegisterCustomDependencies(IServiceCollection services)
         {
             services.AddSingleton<DishInMemoryDatabase>(DishInMemoryDatabase.Instance);
+            services.AddSingleton<OrderInMemoryDatabase>(OrderInMemoryDatabase.Instance);
+            services.AddSingleton<TableReservationInMemoryDatabase>(TableReservationInMemoryDatabase.Instance);
         }
 
         private static void RegisterSwagger(IServiceCollection services)

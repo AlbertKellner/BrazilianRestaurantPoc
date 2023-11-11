@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Playground.Application.Features.Order.Command.Create.Interface;
+using Playground.Application.Features.Order.Command.Create.Repositories;
 
 namespace Playground.Application.Shared.AutofacModules
 {
@@ -7,6 +9,8 @@ namespace Playground.Application.Shared.AutofacModules
         protected override void Load(ContainerBuilder builder)
         {
             //builder.RegisterType<PokemonApi>().As<IPokemonApi>();
+            //builder.RegisterType<CreateOrderRepository>().As<ICreateOrderRepository>();
+
         }
     }
 }

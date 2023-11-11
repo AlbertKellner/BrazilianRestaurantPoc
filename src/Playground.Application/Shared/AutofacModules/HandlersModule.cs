@@ -2,7 +2,8 @@
 using MediatR;
 using Playground.Application.Features.Dish.Command.Create.Models;
 using Playground.Application.Features.Dish.Command.Create.UseCase;
-
+using Playground.Application.Features.Order.Command.Create.Models;
+using Playground.Application.Features.Order.Command.Create.UseCase;
 using System.Reflection;
 
 namespace Playground.Application.Shared.AutofacModules
@@ -11,8 +12,11 @@ namespace Playground.Application.Shared.AutofacModules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(typeof(CreateDishCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
-            builder.RegisterAssemblyTypes(typeof(CreateDishUseCaseHandler).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+            //builder.RegisterAssemblyTypes(typeof(CreateDishCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
+            //builder.RegisterAssemblyTypes(typeof(CreateDishUseCaseHandler).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
+
+            //builder.RegisterAssemblyTypes(typeof(CreateOrderCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
+            //builder.RegisterAssemblyTypes(typeof(CreateOrderUseCaseHandler).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<>));
         }
     }
 }
