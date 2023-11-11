@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dish Menu</title>
+    <title>Dish Menu & Table Reservation</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -12,7 +12,26 @@
         <ul id="dishesList" class="list-group">
             <!-- Dishes will be inserted here -->
         </ul>
-        <button id="submitOrder" class="btn btn-primary mt-3">Send Order</button>
+
+        <!-- Table Reservation Form -->
+        <h2 class="mt-5">Table Reservation</h2>
+        <form id="reservationForm">
+            <div class="form-group">
+                <label for="reservationDateTime">Reservation Date and Time:</label>
+                <input type="datetime-local" class="form-control" id="reservationDateTime" required>
+            </div>
+            <div class="form-group">
+                <label for="customerName">Customer Name:</label>
+                <input type="text" class="form-control" id="customerName" required>
+            </div>
+            <div class="form-group">
+                <label for="customerContact">Customer Contact:</label>
+                <input type="text" class="form-control" id="customerContact" required>
+            </div>
+            <button id="submitOrderAndReserve" class="btn btn-primary mt-3">Send Order and Reserve Table</button>
+        </form>
+
+        
     </div>
     <script src="index_script.js"></script>
 </body>

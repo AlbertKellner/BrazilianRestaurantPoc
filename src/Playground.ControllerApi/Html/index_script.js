@@ -1,6 +1,9 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     fetchDishes();
-    document.getElementById('submitOrder').addEventListener('click', sendOrder);
+
+    document.getElementById('submitOrderAndReserve').addEventListener('click', function (event) {
+        sendOrderAndReserve(event);
+    });
 });
 
 function fetchDishes() {
@@ -33,6 +36,16 @@ function displayDishes(dishes) {
     });
 }
 
+function sendOrderAndReserve(event) {
+    event.preventDefault(); // Adiciona esta linha para prevenir o refresh da página
+
+    sendOrder().then(guid => {
+        console.log(guid)
+        const cleanedGuid = guid.replace(/['"]+/g, '');
+        reserveTable(event, { order_id: cleanedGuid });
+    }).catch(error => console.error('Error:', error));
+}
+
 function sendOrder() {
     const dishesList = document.getElementById('dishesList').getElementsByTagName('li');
     let order = {
@@ -48,14 +61,52 @@ function sendOrder() {
         }
     });
 
-    fetch('https://localhost:7066/Order', {
+    return fetch('https://localhost:7066/Order', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(order)
     })
-        .then(response => response.json())
-        .then(data => console.log('Order successful:', data))
+        .then(response => response.text()) 
+        .then(guid => {
+            console.log('Order successful, GUID:', guid);
+            return guid; // Retornar o GUID para a próxima função
+        });
+}
+
+
+function reserveTable(event, orderResponse) {
+    if (event) event.preventDefault();
+
+    const reservationDateTime = document.getElementById('reservationDateTime').value;
+    const customerName = document.getElementById('customerName').value;
+    const customerContact = document.getElementById('customerContact').value;
+    const tableId = 1; // Obter ID da mesa de alguma forma
+    const orderId = orderResponse ? orderResponse.order_id : null;
+    const reservationCode = '123'; // Obter código de reserva de alguma forma
+
+    const reservationData = {
+        reservation_date_time: reservationDateTime,
+        table_id: tableId,
+        customer_name: customerName,
+        customer_contact: customerContact,
+        order_id: orderId, // GUID retornado pela API sendOrder
+        reservation_code: reservationCode
+    };
+
+    console.log(reservationData);
+    fetch('https://localhost:7066/table-reservation', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(reservationData)
+    })
+        .then(response => response.text()) 
+        .then(data => console.log('Reservation successful:', data))
         .catch(error => console.error('Error:', error));
 }
+
+
+

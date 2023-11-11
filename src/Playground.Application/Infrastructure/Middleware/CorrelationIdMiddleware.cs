@@ -49,7 +49,7 @@ namespace Playground.Application.Infrastructure.Middleware
 
                 CorrelationContext.SetCorrelationId(correlationId);
 
-                _logger.LogWarning("[CorrelationIdMiddleware] CorrelationId ausente. Gerando novo CorrelationId: {@CorrelationId}", correlationId);
+                //_logger.LogWarning("[CorrelationIdMiddleware] CorrelationId ausente. Gerando novo CorrelationId: {@CorrelationId}", correlationId);
             }
 
             context.Response.OnStarting(() =>
