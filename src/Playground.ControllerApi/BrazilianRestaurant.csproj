@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -29,6 +29,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Playground.Application\BrazilianRestaurant.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Html\Index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Html\script.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

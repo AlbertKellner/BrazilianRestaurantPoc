@@ -17,7 +17,20 @@ namespace Microsoft.AspNetCore.Builder
 
             LoadEnvironmentOptions(builder);
 
+            EnableCors(builder);
+
             return builder;
+        }
+
+        private static void EnableCors(WebApplicationBuilder builder)
+        {
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod());
+            });
         }
 
         private static void ServiceProviderFactory(WebApplicationBuilder builder) =>
