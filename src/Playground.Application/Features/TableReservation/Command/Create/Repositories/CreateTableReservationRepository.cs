@@ -19,6 +19,12 @@ namespace Playground.Application.Features.TableReservation.Command.Create.Reposi
             var newItem = new DataBaseTableReservationItem
             {
                 Id = input.Id,
+                ReservationDateTime = input.ReservationDateTime,
+                TableId = input.TableId,
+                CustomerName = input.CustomerName,
+                CustomerContact = input.CustomerContact,
+                OrderId = input.OrderId,
+                ReservationCode = input.ReservationCode
             };
 
             _inMemoryDatabase.AddTableReservationItem(newItem);
