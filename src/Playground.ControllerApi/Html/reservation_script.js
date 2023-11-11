@@ -1,25 +1,26 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('submitOrderAndReserve').addEventListener('click', function (event) {
-        reserveTable(event);
+        sendOrderAndReserve(event);
     });
 });
 
-function reserveTable(event) {
+function sendOrderAndReserve(event) {
     event.preventDefault();
+
+    reserveTable(event, { order_id: '00000000-0000-0000-0000-000000000000' });
+}
+
+function reserveTable(event, orderResponse) {
+    if (event) event.preventDefault();
 
     const urlParams = new URLSearchParams(window.location.search);
     const tableId = urlParams.get('tableId') || Math.floor(Math.random() * 10) + 1; // Adicionado para ler da query string
 
-    const reservationDateTime = document.getElementById('reservationDateTime').value;
-    const customerName = document.getElementById('customerName').value;
-    const customerContact = document.getElementById('customerContact').value;
-    const orderId = '00000000-0000-0000-0000-000000000000';
+    const reservationDateTime = '2000-01-01T12:00';
+    const customerName = 'none';
+    const customerContact = 'none';
+    const orderId = orderResponse ? orderResponse.order_id : null;
     const reservationCode = (Math.floor(Math.random() * 700) + 300).toString();
-
-    if (!customerName.trim() || !customerContact.trim()) {
-        alert("Customer name and contact are required.");
-        return;
-    }
 
     const reservationData = {
         reservation_date_time: reservationDateTime,
@@ -37,19 +38,11 @@ function reserveTable(event) {
         },
         body: JSON.stringify(reservationData)
     })
-        .then(response => response.json())
+        .then(response => response.json()) // Alterado para json() para obter o corpo da resposta.
         .then(data => {
             console.log('Reservation successful:', data);
-
-            document.getElementById('confirmationMessage').innerText = "Your table has been successfully reserved!";
-            document.getElementById('displayDateTime').innerText = reservationDateTime;
-            document.getElementById('displayTableId').innerText = tableId;
-            document.getElementById('displayCustomerName').innerText = customerName;
-            document.getElementById('displayCustomerContact').innerText = customerContact;
-            document.getElementById('displayReservationCode').innerText = reservationCode;
-            document.getElementById('confirmationSection').style.display = 'block';
-
-            document.getElementById('reservationForm').style.display = 'none';
+            // Redirecionamento para a página de confirmação com o TableReservationId na query string.
+            window.location.href = `confirmation.html?TableReservationId=${data}`;
         })
         .catch(error => console.error('Error:', error));
 }

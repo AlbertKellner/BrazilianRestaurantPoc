@@ -1,10 +1,16 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
     fetchDishes();
 
+    const tableId = getTableIdFromQuery();
+    if (tableId) {
+        document.getElementById('title').innerText += ` - Table #${tableId}`;
+    }
+
     document.getElementById('submitOrderAndReserve').addEventListener('click', function (event) {
-        reserveTable(event);
+        sendOrderAndReserve(event);
     });
 });
+
 
 function fetchDishes() {
     fetch('https://localhost:7066/dish')
@@ -13,6 +19,11 @@ function fetchDishes() {
             displayDishes(data);
         })
         .catch(error => console.error('Error:', error));
+}
+
+function getTableIdFromQuery() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('tableid');
 }
 
 function displayDishes(dishes) {
@@ -36,7 +47,7 @@ function displayDishes(dishes) {
     });
 }
 
-function reserveTable(event) {
+function sendOrderAndReserve(event) {
     event.preventDefault(); 
 
     sendOrder().then(guid => {
@@ -78,7 +89,7 @@ function reserveTable(event, orderResponse) {
     if (event) event.preventDefault();
 
     const urlParams = new URLSearchParams(window.location.search);
-    const tableId = urlParams.get('tableId') || Math.floor(Math.random() * 10) + 1; // Adicionado para ler da query string
+    const tableId = urlParams.get('tableid') || Math.floor(Math.random() * 10) + 1; // Adicionado para ler da query string
 
     const reservationDateTime = '2000-01-01T12:00';
     const customerName = 'none';
@@ -102,11 +113,10 @@ function reserveTable(event, orderResponse) {
         },
         body: JSON.stringify(reservationData)
     })
-        .then(response => response.json()) // Alterado para json() para obter o corpo da resposta.
+        .then(response => response.json())
         .then(data => {
             console.log('Reservation successful:', data);
-            // Redirecionamento para a página de confirmação com o TableReservationId na query string.
-            window.location.href = `confirmation.html?TableReservationId=${data}`;
+            window.location.href = `confirmation.html?tablereservationid=${data}`;
         })
         .catch(error => console.error('Error:', error));
 }
