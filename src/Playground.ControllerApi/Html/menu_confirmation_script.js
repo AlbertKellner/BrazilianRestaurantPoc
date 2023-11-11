@@ -33,6 +33,8 @@ function fetchTableReservation(reservationId) {
 }
 
 function fetchOrderDetails(orderId) {
+    let totalCost = 0;
+
     fetch(`https://localhost:7066/Order/${orderId}`)
         .then(response => {
             if (!response.ok) {
@@ -43,18 +45,19 @@ function fetchOrderDetails(orderId) {
         .then(data => {
             console.log('Order details:', data);
 
-            document.getElementById('totalCost').innerHTML = data.price;
-
             var dishesIds = data.dishes_ids;
-            dishesIds.forEach(dishId => {
-                fetchDishDetails(dishId);
+            let dishesPromises = dishesIds.map(dishId => fetchDishDetails(dishId, totalCost));
+
+            Promise.all(dishesPromises).then(results => {
+                totalCost = results.reduce((sum, value) => sum + value, 0);
+                document.getElementById('totalCost').innerHTML = totalCost.toFixed(2);
             });
         })
         .catch(error => console.error('Error fetching order:', error));
 }
 
-function fetchDishDetails(dishId) {
-    fetch(`https://localhost:7066/Dish/${dishId}`)
+function fetchDishDetails(dishId, totalCost) {
+    return fetch(`https://localhost:7066/Dish/${dishId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -67,6 +70,8 @@ function fetchDishDetails(dishId) {
             var dishItem = document.createElement('li');
             dishItem.textContent = `${dishData.dish_name} - $ ${dishData.price.toFixed(2)}`;
             dishesList.appendChild(dishItem);
+
+            return totalCost + dishData.price;
         })
         .catch(error => console.error('Error fetching dish details:', error));
 }
