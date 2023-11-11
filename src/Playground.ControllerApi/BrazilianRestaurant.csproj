@@ -32,6 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Html\Confirmation.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Html\Index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

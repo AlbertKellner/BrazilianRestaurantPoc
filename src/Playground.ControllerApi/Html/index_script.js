@@ -74,14 +74,15 @@ function sendOrder() {
         });
 }
 
-
 function reserveTable(event, orderResponse) {
     if (event) event.preventDefault();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const tableId = urlParams.get('tableId') || Math.floor(Math.random() * 10) + 1; // Adicionado para ler da query string
 
     const reservationDateTime = document.getElementById('reservationDateTime').value;
     const customerName = document.getElementById('customerName').value;
     const customerContact = document.getElementById('customerContact').value;
-    const tableId = Math.floor(Math.random() * 10) + 1;
     const orderId = orderResponse ? orderResponse.order_id : null;
     const reservationCode = (Math.floor(Math.random() * 700) + 300).toString();
 
@@ -90,11 +91,10 @@ function reserveTable(event, orderResponse) {
         table_id: tableId,
         customer_name: customerName,
         customer_contact: customerContact,
-        order_id: orderId, 
+        order_id: orderId,
         reservation_code: reservationCode
     };
 
-    console.log(reservationData);
     fetch('https://localhost:7066/table-reservation', {
         method: 'POST',
         headers: {
@@ -102,10 +102,11 @@ function reserveTable(event, orderResponse) {
         },
         body: JSON.stringify(reservationData)
     })
-        .then(response => response.text()) 
-        .then(data => console.log('Reservation successful:', data))
+        .then(response => response.json()) // Alterado para json() para obter o corpo da resposta.
+        .then(data => {
+            console.log('Reservation successful:', data);
+            // Redirecionamento para a página de confirmação com o TableReservationId na query string.
+            window.location.href = `confirmation.html?TableReservationId=${data}`;
+        })
         .catch(error => console.error('Error:', error));
 }
-
-
-
