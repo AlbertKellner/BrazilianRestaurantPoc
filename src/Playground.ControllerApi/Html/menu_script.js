@@ -71,6 +71,11 @@ function sendOrder() {
         }
     });
 
+    if (order.dishes_ids.length === 0) {
+        alert('Please select at least one dish before proceeding with the order.');
+        return;
+    }
+
     return fetch('https://localhost:7066/Order', {
         method: 'POST',
         headers: {
