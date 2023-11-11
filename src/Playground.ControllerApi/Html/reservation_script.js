@@ -16,10 +16,10 @@ function reserveTable(event, orderResponse) {
     const urlParams = new URLSearchParams(window.location.search);
     const tableId = urlParams.get('tableId') || Math.floor(Math.random() * 10) + 1; // Adicionado para ler da query string
 
-    const reservationDateTime = '2000-01-01T12:00';
-    const customerName = 'none';
-    const customerContact = 'none';
-    const orderId = orderResponse ? orderResponse.order_id : null;
+    const reservationDateTime = document.getElementById('reservationDateTime').value;
+    const customerName = document.getElementById('customerName').value;
+    const customerContact = document.getElementById('customerContact').value;
+    const orderId = '00000000-0000-0000-0000-000000000000';
     const reservationCode = (Math.floor(Math.random() * 700) + 300).toString();
 
     const reservationData = {
@@ -38,11 +38,19 @@ function reserveTable(event, orderResponse) {
         },
         body: JSON.stringify(reservationData)
     })
-        .then(response => response.json()) // Alterado para json() para obter o corpo da resposta.
+        .then(response => response.json())
         .then(data => {
             console.log('Reservation successful:', data);
-            // Redirecionamento para a página de confirmação com o TableReservationId na query string.
-            window.location.href = `confirmation.html?TableReservationId=${data}`;
+
+            document.getElementById('confirmationMessage').innerText = "Your table has been successfully reserved!";
+            document.getElementById('displayDateTime').innerText = reservationDateTime;
+            document.getElementById('displayTableId').innerText = tableId;
+            document.getElementById('displayCustomerName').innerText = customerName;
+            document.getElementById('displayCustomerContact').innerText = customerContact;
+            document.getElementById('displayReservationCode').innerText = reservationCode;
+            document.getElementById('confirmationSection').style.display = 'block';
+
+            document.getElementById('reservationForm').style.display = 'none';
         })
         .catch(error => console.error('Error:', error));
 }
