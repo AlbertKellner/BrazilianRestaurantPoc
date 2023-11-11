@@ -25,7 +25,7 @@ function fetchTableReservation(reservationId) {
             return response.json();
         })
         .then(data => {
-            console.log('Reservation details:', data);
+            //console.log('Reservation details:', data);
             
             document.getElementById('reservationCode').innerHTML = data.reservation_code;
         })
@@ -41,7 +41,7 @@ function fetchOrderDetails(orderId) {
             return response.json();
         })
         .then(data => {
-            console.log('Order details:', data);
+            //console.log('Order details:', data);
 
             document.getElementById('totalCost').innerHTML = data.price;
 
@@ -62,7 +62,7 @@ function fetchDishDetails(dishId) {
             return response.json();
         })
         .then(dishData => {
-            console.log('Dish details:', dishData);
+            //console.log('Dish details:', dishData);
             var dishesList = document.getElementById('dishesList');
             var dishItem = document.createElement('li');
             dishItem.textContent = `${dishData.dish_name} - $ ${dishData.price.toFixed(2)}`;

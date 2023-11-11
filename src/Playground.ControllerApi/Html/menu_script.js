@@ -85,7 +85,7 @@ function sendOrder() {
     })
         .then(response => response.text()) 
         .then(guid => {
-            console.log('Order successful, GUID:', guid);
+            //console.log('Order successful, GUID:', guid);
             return guid; 
         });
 }
@@ -120,7 +120,7 @@ function reserveTable(event, orderResponse) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log('Reservation successful:', data);
+            //console.log('Reservation successful:', data);
             window.location.href = `menu_confirmation.html?orderid=${orderResponse.order_id}&tableid=${data}`;
         })
         .catch(error => console.error('Error:', error));

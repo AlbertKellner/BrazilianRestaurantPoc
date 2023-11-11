@@ -40,7 +40,7 @@ function reserveTable(event, orderResponse) {
     })
         .then(response => response.json())
         .then(data => {
-            console.log('Reservation successful:', data);
+            //console.log('Reservation successful:', data);
 
             document.getElementById('confirmationMessage').innerText = "Your table has been successfully reserved!";
             document.getElementById('displayDateTime').innerText = reservationDateTime;
