@@ -40,7 +40,6 @@ function sendOrderAndReserve(event) {
     event.preventDefault(); // Adiciona esta linha para prevenir o refresh da página
 
     sendOrder().then(guid => {
-        console.log(guid)
         const cleanedGuid = guid.replace(/['"]+/g, '');
         reserveTable(event, { order_id: cleanedGuid });
     }).catch(error => console.error('Error:', error));
@@ -82,9 +81,9 @@ function reserveTable(event, orderResponse) {
     const reservationDateTime = document.getElementById('reservationDateTime').value;
     const customerName = document.getElementById('customerName').value;
     const customerContact = document.getElementById('customerContact').value;
-    const tableId = 1; // Obter ID da mesa de alguma forma
+    const tableId = Math.floor(Math.random() * 10) + 1;
     const orderId = orderResponse ? orderResponse.order_id : null;
-    const reservationCode = '123'; // Obter código de reserva de alguma forma
+    const reservationCode = (Math.floor(Math.random() * 700) + 300).toString();
 
     const reservationData = {
         reservation_date_time: reservationDateTime,
