@@ -35,7 +35,7 @@ function displayDishes(dishes) {
         listItem.innerHTML = `
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <strong>Name:</strong> ${dish.dish_name}, <strong>Price:</strong> NZD$ ${dish.price.toFixed(2)}
+                    <strong>Name:</strong> ${dish.dish_name}, <strong>Price:</strong> $ ${dish.price.toFixed(2)}
                 </div>
                 <div>
                     <input type="number" min="0" value="0" id="id_${dish.id}" class="form-control" style="width: 60px;">

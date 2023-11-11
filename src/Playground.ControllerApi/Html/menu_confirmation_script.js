@@ -65,7 +65,7 @@ function fetchDishDetails(dishId) {
             console.log('Dish details:', dishData);
             var dishesList = document.getElementById('dishesList');
             var dishItem = document.createElement('li');
-            dishItem.textContent = `${dishData.dish_name} - NZD$ ${dishData.price.toFixed(2)}`;
+            dishItem.textContent = `${dishData.dish_name} - $ ${dishData.price.toFixed(2)}`;
             dishesList.appendChild(dishItem);
         })
         .catch(error => console.error('Error fetching dish details:', error));
