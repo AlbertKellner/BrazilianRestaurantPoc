@@ -5,21 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .beige-card {
+            background-color: #f5f5dc;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5" id="confirmationSection" ">
-        <h2 class="mt-5">Order Details</h2>
-        <p id="confirmationMessage"></p>
-        <ul>
-            <li style="display: none;">Order ID: <span id="orderId" ></span></li>
-            <li style="display: none;">Table: <span id="tableId"></span></li>
-            <br />
-            <li>Order Code: <span id="reservationCode"></span></li>
-            <br />
-            <li>Total Cost: <span id="totalCost"></span></li>
-            <br />
-            <li>Dishes: <ul id="dishesList"></ul></li>
-        </ul>
+    <div class="container mt-5">
+        <div class="card beige-card">
+            <div class="card-body" id="confirmationSection">
+                <h2 class="card-title">Order #<span id="reservationCode"></span></h2>
+                <p id="confirmationMessage"></p>
+                <ul>
+                    <li style="display: none;">Order ID: <span id="orderId"></span></li>
+                    <li style="display: none;">Table: <span id="tableId"></span></li>
+                    <br />
+                    <li>Dishes: <ul id="dishesList"></ul></li>
+                    <br />
+                    <li>Total Cost: <span id="totalCost"></span></li>
+                </ul>
+            </div>
+        </div>
     </div>
     <script src="menu_confirmation_script.js"></script>
 </body>
