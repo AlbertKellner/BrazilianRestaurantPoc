@@ -4,12 +4,12 @@
     {
         public static string ToWarning(this UpdateTableReservationCommand input)
         {
-            return $@"{nameof(input.DishName)}:{input.DishName}|{nameof(input.Price)}:{input.Price}|{nameof(input.IsAvailable)}:{input.IsAvailable}|{nameof(input.FormattedErrosList)}:{input.FormattedErrosList()}";
+            return $@"{nameof(input.CustomerName)}:{input.CustomerName}|{nameof(input.TableId)}:{input.TableId}|{nameof(input.ReservationDateTime)}:{input.ReservationDateTime}|{nameof(input.ErrosList)}:{string.Join(", ", input.ErrosList())}";
         }
 
         public static string ToInformation(this UpdateTableReservationCommand input)
         {
-            return $@"{nameof(input.DishName)}:{input.DishName}|{nameof(input.Price)}:{input.Price}|{nameof(input.IsAvailable)}:{input.IsAvailable}";
+            return $@"{nameof(input.CustomerName)}:{input.CustomerName}|{nameof(input.TableId)}:{input.TableId}|{nameof(input.ReservationDateTime)}:{input.ReservationDateTime}";
         }
     }
 }

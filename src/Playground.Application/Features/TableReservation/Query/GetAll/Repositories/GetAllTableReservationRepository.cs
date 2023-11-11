@@ -19,19 +19,12 @@ namespace Playground.Application.Features.TableReservation.Command.GetAll.Reposi
                 .Select(TableReservation => new GetAllTableReservationOutput
                 {
                     Id = TableReservation.Id,
-                    DishName = TableReservation.DishName,
-                    Description = TableReservation.Description,
-                    Price = TableReservation.Price,
-                    Category = TableReservation.Category,
-                    CookingTime = TableReservation.CookingTime,
-                    ServingSize = TableReservation.ServingSize,
-                    Ingredients = TableReservation.Ingredients.ToArray(),
-                    Allergens = TableReservation.Allergens.ToArray(),
-                    SpicinessLevel = TableReservation.SpicinessLevel,
-                    IsAvailable = TableReservation.IsAvailable,
-                    ImageUrl = TableReservation.ImageUrl,
-                    ChefRecommendation = TableReservation.ChefRecommendation,
-                    Special = TableReservation.Special
+                    ReservationDateTime = TableReservation.ReservationDateTime,
+                    TableId = TableReservation.TableId,
+                    CustomerName = TableReservation.CustomerName,
+                    CustomerContact = TableReservation.CustomerContact,
+                    OrderId = TableReservation.OrderId,
+                    ReservationCode = TableReservation.ReservationCode
                 })
                 .ToList();
 

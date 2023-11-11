@@ -1,4 +1,5 @@
-﻿using Playground.Application.Features.Order.Command.GetById.Interface;
+﻿using BrazilianRestaurant.Application.Shared.InMemoryDatabase.DataBaseItem;
+using Playground.Application.Features.Order.Command.GetById.Interface;
 using Playground.Application.Features.Order.Query.GetById.Models;
 using Playground.Application.Shared.InMemoryDatabase;
 
@@ -24,10 +25,7 @@ namespace Playground.Application.Features.Order.Command.GetById.Repositories
 
             var OrderOutput = new GetByIdOrderOutput
             {
-                Id = OrderItem.Id,
-                OrderName = OrderItem.OrderName,
-                Price = OrderItem.Price,
-                ChefRecommendation = OrderItem.ChefRecommendation
+                Id = input.Id
             };
 
             return await Task.FromResult(OrderOutput);

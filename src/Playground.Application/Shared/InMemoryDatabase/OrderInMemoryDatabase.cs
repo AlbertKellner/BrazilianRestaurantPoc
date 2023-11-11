@@ -47,9 +47,9 @@ namespace Playground.Application.Shared.InMemoryDatabase
             var existingItem = OrderItems.FirstOrDefault(item => item.Id == updatedItem.Id);
             if (existingItem != null)
             {
-                existingItem.OrderName = updatedItem.OrderName;
+                existingItem.Id = updatedItem.Id;
+                existingItem.DishesIds = updatedItem.DishesIds;
                 existingItem.Price = updatedItem.Price;
-                existingItem.ChefRecommendation = updatedItem.ChefRecommendation;
             }
         }
 
@@ -63,5 +63,4 @@ namespace Playground.Application.Shared.InMemoryDatabase
             }
         }
     }
-
 }

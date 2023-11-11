@@ -19,9 +19,8 @@ namespace Playground.Application.Features.Order.Command.Create.Repositories
             var newItem = new DataBaseOrderItem
             {
                 Id = input.Id,
-                OrderName = input.OrderName,
-                Price = input.Price,
-                ChefRecommendation = input.ChefRecommendation
+                DishesIds = input.DishesIds,
+                Price = input.Price
             };
 
             _inMemoryDatabase.AddOrderItem(newItem);

@@ -24,20 +24,7 @@ namespace Playground.Application.Features.TableReservation.Command.GetById.Repos
 
             var TableReservationOutput = new GetByIdTableReservationOutput
             {
-                Id = TableReservationItem.Id,
-                DishName = TableReservationItem.DishName,
-                Description = TableReservationItem.Description,
-                Price = TableReservationItem.Price,
-                Category = TableReservationItem.Category,
-                CookingTime = TableReservationItem.CookingTime,
-                ServingSize = TableReservationItem.ServingSize,
-                Ingredients = TableReservationItem.Ingredients,
-                Allergens = TableReservationItem.Allergens,
-                SpicinessLevel = TableReservationItem.SpicinessLevel,
-                IsAvailable = TableReservationItem.IsAvailable,
-                ImageUrl = TableReservationItem.ImageUrl,
-                ChefRecommendation = TableReservationItem.ChefRecommendation,
-                Special = TableReservationItem.Special
+                Id = input.Id
             };
 
             return await Task.FromResult(TableReservationOutput);

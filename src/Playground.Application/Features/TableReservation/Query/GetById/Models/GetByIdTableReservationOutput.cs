@@ -7,47 +7,26 @@ namespace Playground.Application.Features.TableReservation.Query.GetById.Models
     public class GetByIdTableReservationOutput
     {
         [JsonPropertyName("id")]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } 
 
-        [JsonPropertyName("dish_name")]
-        public string DishName { get; set; } = string.Empty;
+        [JsonPropertyName("reservation_datetime")]
+        public DateTime ReservationDateTime { get; set; }
 
-        [JsonPropertyName("description")]
-        public string Description { get; set; } = string.Empty;
+        [JsonPropertyName("table_id")]
+        public int TableId { get; set; } 
 
-        [JsonPropertyName("price")]
-        public decimal Price { get; set; }
+        [JsonPropertyName("customer_name")]
+        public string CustomerName { get; set; } = string.Empty; 
 
-        [JsonPropertyName("category")]
-        public string Category { get; set; } = string.Empty;
+        [JsonPropertyName("customer_contact")]
+        public string CustomerContact { get; set; } = string.Empty;
 
-        [JsonPropertyName("cooking_time")]
-        public int CookingTime { get; set; }
+        [JsonPropertyName("order_id")]
+        public Guid OrderId { get; set; } 
 
-        [JsonPropertyName("serving_size")]
-        public int ServingSize { get; set; }
+        [JsonPropertyName("reservation_code")]
+        public string ReservationCode { get; set; } = string.Empty;
 
-        [JsonPropertyName("ingredients")]
-        public List<string> Ingredients { get; set; } = new List<string>();
-
-        [JsonPropertyName("allergens")]
-        public List<string> Allergens { get; set; } = new List<string>();
-
-        [JsonPropertyName("spiciness_level")]
-        public string SpicinessLevel { get; set; } = string.Empty;
-
-        [JsonPropertyName("is_available")]
-        public bool IsAvailable { get; set; } = true;
-
-        [JsonPropertyName("image_url")]
-        public string ImageUrl { get; set; } = string.Empty;
-
-        [JsonPropertyName("chef_recommendation")]
-        public bool ChefRecommendation { get; set; } = false;
-
-        [JsonPropertyName("special")]
-        public bool Special { get; set; } = false;
-
-        public bool IsValid() => Id != Guid.Empty;
+        public bool IsValid() => Id != Guid.Empty && TableId > 0 && !string.IsNullOrEmpty(CustomerName);
     }
 }

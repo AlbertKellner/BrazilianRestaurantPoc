@@ -4,12 +4,14 @@
     {
         public static string ToWarning(this UpdateOrderCommand input)
         {
-            return $@"{nameof(input.OrderName)}:{input.OrderName}|{nameof(input.Price)}:{input.Price}|{nameof(input.FormattedErrosList)}:{input.FormattedErrosList()}";
+            var dishesIdsString = string.Join(", ", input.DishesIds);
+            return $@"{nameof(input.Id)}:{input.Id}|{nameof(input.DishesIds)}:[{dishesIdsString}]|{nameof(input.Price)}:{input.Price}";
         }
 
         public static string ToInformation(this UpdateOrderCommand input)
         {
-            return $@"{nameof(input.OrderName)}:{input.OrderName}|{nameof(input.Price)}:{input.Price}";
+            var dishesIdsString = string.Join(", ", input.DishesIds);
+            return $@"{nameof(input.Id)}:{input.Id}|{nameof(input.DishesIds)}:[{dishesIdsString}]|{nameof(input.Price)}:{input.Price}";
         }
     }
 }

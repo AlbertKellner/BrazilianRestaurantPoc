@@ -15,17 +15,17 @@ namespace Playground.Application.Features.Order.Command.GetAll.Repositories
 
         public async Task<IEnumerable<GetAllOrderOutput>> GetAllOrderAsync(GetAllOrderQuery input, CancellationToken cancellationToken)
         {
-            var Orderes = _inMemoryDatabase.GetOrderItems()
-                .Select(Order => new GetAllOrderOutput
-                {
-                    Id = Order.Id,
-                    OrderName = Order.OrderName,
-                    Price = Order.Price,
-                    ChefRecommendation = Order.ChefRecommendation
-                })
-                .ToList();
+            var orders = _inMemoryDatabase.GetOrderItems()
+                            .Select(order => new GetAllOrderOutput
+                            {
+                                Id = order.Id,
+                                DishesIds = order.DishesIds,
+                                Price = order.Price
+                            })
+                            .ToList();
 
-            return await Task.FromResult(Orderes);
+
+            return await Task.FromResult(orders);
         }
     }
 }

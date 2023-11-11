@@ -47,21 +47,15 @@ namespace Playground.Application.Shared.InMemoryDatabase
             var existingItem = TableReservationItems.FirstOrDefault(item => item.Id == updatedItem.Id);
             if (existingItem != null)
             {
-                existingItem.DishName = updatedItem.DishName;
-                existingItem.Description = updatedItem.Description;
-                existingItem.Price = updatedItem.Price;
-                existingItem.Category = updatedItem.Category;
-                existingItem.CookingTime = updatedItem.CookingTime;
-                existingItem.ServingSize = updatedItem.ServingSize;
-                existingItem.Ingredients = updatedItem.Ingredients;
-                existingItem.Allergens = updatedItem.Allergens;
-                existingItem.SpicinessLevel = updatedItem.SpicinessLevel;
-                existingItem.IsAvailable = updatedItem.IsAvailable;
-                existingItem.ImageUrl = updatedItem.ImageUrl;
-                existingItem.ChefRecommendation = updatedItem.ChefRecommendation;
-                existingItem.Special = updatedItem.Special;
+                existingItem.ReservationDateTime = updatedItem.ReservationDateTime;
+                existingItem.TableId = updatedItem.TableId;
+                existingItem.CustomerName = updatedItem.CustomerName;
+                existingItem.CustomerContact = updatedItem.CustomerContact;
+                existingItem.OrderId = updatedItem.OrderId;
+                existingItem.ReservationCode = updatedItem.ReservationCode;
             }
         }
+
 
         // Delete
         public void RemoveTableReservationItem(Guid id)

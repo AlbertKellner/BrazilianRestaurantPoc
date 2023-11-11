@@ -19,24 +19,18 @@ namespace Playground.Application.Features.TableReservation.Command.Update.Reposi
             var databaseItem = new DataBaseTableReservationItem
             {
                 Id = input.Id,
-                DishName = input.DishName,
-                Description = input.Description,
-                Price = input.Price,
-                Category = input.Category,
-                CookingTime = input.CookingTime,
-                ServingSize = input.ServingSize,
-                Ingredients = input.Ingredients,
-                Allergens = input.Allergens,
-                SpicinessLevel = input.SpicinessLevel,
-                IsAvailable = input.IsAvailable,
-                ImageUrl = input.ImageUrl,
-                ChefRecommendation = input.ChefRecommendation,
-                Special = input.Special
+                ReservationDateTime = input.ReservationDateTime,
+                TableId = input.TableId,
+                CustomerName = input.CustomerName,
+                CustomerContact = input.CustomerContact,
+                OrderId = input.OrderId,
+                ReservationCode = input.ReservationCode
             };
 
             _inMemoryDatabase.UpdateTableReservationItem(databaseItem);
 
             return new();
         }
+
     }
 }

@@ -4,6 +4,7 @@ using MediatR;
 using System.Text.Json.Serialization;
 using Playground.Application.Shared.Features.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 
 namespace Playground.Application.Features.TableReservation.Command.Update.Models
 {
@@ -11,46 +12,25 @@ namespace Playground.Application.Features.TableReservation.Command.Update.Models
     {
         [JsonIgnore]
         [BindNever]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } 
 
-        [JsonPropertyName("dish_name")]
-        public string DishName { get; set; } = string.Empty;
+        [JsonPropertyName("reservation_date_time")]
+        public DateTime ReservationDateTime { get; set; }
 
-        [JsonPropertyName("description")]
-        public string Description { get; set; } = string.Empty;
+        [JsonPropertyName("table_id")]
+        public int TableId { get; set; } 
 
-        [JsonPropertyName("price")]
-        public decimal Price { get; set; }
+        [JsonPropertyName("customer_name")]
+        public string CustomerName { get; set; } = string.Empty;
 
-        [JsonPropertyName("category")]
-        public string Category { get; set; } = string.Empty;
+        [JsonPropertyName("customer_contact")]
+        public string CustomerContact { get; set; } = string.Empty;
 
-        [JsonPropertyName("cooking_time")]
-        public int CookingTime { get; set; }
+        [JsonPropertyName("order_id")]
+        public Guid OrderId { get; set; } 
 
-        [JsonPropertyName("serving_size")]
-        public int ServingSize { get; set; }
-
-        [JsonPropertyName("ingredients")]
-        public List<string> Ingredients { get; set; } = new List<string>();
-
-        [JsonPropertyName("allergens")]
-        public List<string> Allergens { get; set; } = new List<string>();
-
-        [JsonPropertyName("spiciness_level")]
-        public string SpicinessLevel { get; set; } = string.Empty;
-
-        [JsonPropertyName("is_available")]
-        public bool IsAvailable { get; set; } = true;
-
-        [JsonPropertyName("image_url")]
-        public string ImageUrl { get; set; } = string.Empty;
-
-        [JsonPropertyName("chef_recommendation")]
-        public bool ChefRecommendation { get; set; } = false;
-
-        [JsonPropertyName("special")]
-        public bool Special { get; set; } = false;
+        [JsonPropertyName("reservation_code")]
+        public string ReservationCode { get; set; } = string.Empty;
 
         public override IEnumerable<string> ErrosList()
         {
@@ -58,14 +38,11 @@ namespace Playground.Application.Features.TableReservation.Command.Update.Models
                 .Requires()
                 .IsNotNullOrEmpty(Id.ToString(), nameof(Id), $"{nameof(Id)} cannot be null or empty")
                 .IsTrue(Guid.TryParse(Id.ToString(), out _), nameof(Id), $"{nameof(Id)} must be a valid GUID")
-                .IsNotNullOrWhiteSpace(DishName, nameof(DishName), $"{nameof(DishName)} cannot be empty or just white spaces")
-                .IsGreaterThan(Price, 0, nameof(Price), $"{nameof(Price)} must be greater than 0")
-                .IsNotNullOrWhiteSpace(Category, nameof(Category), $"{nameof(Category)} cannot be empty or just white spaces")
-                .IsGreaterOrEqualsThan(CookingTime, 0, nameof(CookingTime), $"{nameof(CookingTime)} must be zero or more for instant TableReservationes")
-                .IsGreaterOrEqualsThan(ServingSize, 1, nameof(ServingSize), $"{nameof(ServingSize)} must be at least 1")
-                .IsNotNull(Ingredients, nameof(Ingredients), $"{nameof(Ingredients)} cannot be null")
-                .IsNotNull(Allergens, nameof(Allergens), $"{nameof(Allergens)} cannot be null")
-                .IsNotNullOrWhiteSpace(ImageUrl, nameof(ImageUrl), $"{nameof(ImageUrl)} cannot be empty or just white spaces");
+                .IsNotNullOrWhiteSpace(CustomerName, nameof(CustomerName), $"{nameof(CustomerName)} cannot be empty or just white spaces")
+                .IsNotNullOrWhiteSpace(CustomerContact, nameof(CustomerContact), $"{nameof(CustomerContact)} cannot be empty or just white spaces")
+                .IsGreaterOrEqualsThan(TableId, 1, nameof(TableId), $"{nameof(TableId)} must be at least 1")
+                .IsTrue(ReservationDateTime > DateTime.MinValue, nameof(ReservationDateTime), $"{nameof(ReservationDateTime)} must be a valid date and time")
+                .IsNotNullOrEmpty(ReservationCode, nameof(ReservationCode), $"{nameof(ReservationCode)} cannot be null or empty");
 
             return GenerateErrorList(contract);
         }
