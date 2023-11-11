@@ -21,7 +21,8 @@ namespace Playground.Application.Features.Dish.Command.Create.Repositories
                 Id = input.Id,
                 DishName = input.DishName,
                 Price = input.Price,
-                ChefRecommendation = input.ChefRecommendation
+                ChefRecommendation = input.ChefRecommendation,
+                Quantity = input.Quantity
             };
 
             _inMemoryDatabase.AddDishItem(newItem);

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Playground.Application.Features.Dish.Query.GetById.Models
 {
     public class GetByIdDishOutput
     {
+        private int quantity;
+
         [JsonPropertyName("id")]
         public Guid Id { get; set; }
 
@@ -17,6 +17,13 @@ namespace Playground.Application.Features.Dish.Query.GetById.Models
 
         [JsonPropertyName("chef_recommendation")]
         public bool ChefRecommendation { get; set; } = false;
+
+        [JsonPropertyName("quantity")]
+        public int Quantity
+        {
+            get => quantity;
+            set => quantity = value == 0 ? 1 : value;
+        }
 
         public bool IsValid() => Id != Guid.Empty;
     }

@@ -50,6 +50,7 @@ namespace Playground.Application.Shared.InMemoryDatabase
                 existingItem.DishName = updatedItem.DishName;
                 existingItem.Price = updatedItem.Price;
                 existingItem.ChefRecommendation = updatedItem.ChefRecommendation;
+                existingItem.Quantity = updatedItem.Quantity;
             }
         }
 

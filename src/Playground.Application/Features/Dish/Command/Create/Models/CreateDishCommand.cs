@@ -9,15 +9,12 @@ namespace Playground.Application.Features.Dish.Command.Create.Models
 {
     public class CreateDishCommand : ValidatableInputBase, IRequest<CreateDishOutput>
     {
-        public CreateDishCommand()
-        {
-            Id = Guid.NewGuid();
-        }
+        private int quantity;
 
         [JsonIgnore]
         [BindNever]
         [JsonPropertyName("id")]
-        public Guid Id { get; private set; }
+        public Guid Id { get; private set; } = Guid.NewGuid();
 
         [JsonPropertyName("dish_name")]
         public string DishName { get; set; } = string.Empty;
@@ -28,6 +25,13 @@ namespace Playground.Application.Features.Dish.Command.Create.Models
         [JsonPropertyName("chef_recommendation")]
         public bool ChefRecommendation { get; set; } = false;
 
+        [JsonPropertyName("quantity")]
+        public int Quantity
+        {
+            get => quantity;
+            set => quantity = value == 0 ? 1 : value;
+        }
+
         public override IEnumerable<string> ErrosList()
         {
             var contract = new Contract<Notification>()
@@ -35,7 +39,8 @@ namespace Playground.Application.Features.Dish.Command.Create.Models
                 .IsNotNullOrEmpty(Id.ToString(), nameof(Id), $"{nameof(Id)} cannot be null or empty")
                 .IsTrue(Guid.TryParse(Id.ToString(), out _), nameof(Id), $"{nameof(Id)} must be a valid GUID")
                 .IsNotNullOrWhiteSpace(DishName, nameof(DishName), $"{nameof(DishName)} cannot be empty or whitespace only")
-                .IsGreaterThan(Price, 0, nameof(Price), $"{nameof(Price)} must be greater than 0");
+                .IsGreaterThan(Price, 0, nameof(Price), $"{nameof(Price)} must be greater than 0")
+                .IsGreaterOrEqualsThan(Quantity, 1, nameof(Quantity), $"{nameof(Quantity)} must be at least 1");
 
             return GenerateErrorList(contract);
         }

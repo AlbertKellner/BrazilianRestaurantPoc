@@ -22,6 +22,7 @@ namespace Playground.Application.Features.Dish.Command.Update.Repositories
                 DishName = input.DishName,
                 Price = input.Price,
                 ChefRecommendation = input.ChefRecommendation,
+                Quantity = input.Quantity
             };
 
             _inMemoryDatabase.UpdateDishItem(databaseItem);

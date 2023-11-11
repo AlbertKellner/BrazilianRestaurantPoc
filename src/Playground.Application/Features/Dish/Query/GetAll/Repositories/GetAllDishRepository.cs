@@ -21,7 +21,8 @@ namespace Playground.Application.Features.Dish.Command.GetAll.Repositories
                     Id = dish.Id,
                     DishName = dish.DishName,
                     Price = dish.Price,
-                    ChefRecommendation = dish.ChefRecommendation
+                    ChefRecommendation = dish.ChefRecommendation,
+                    Quantity = dish.Quantity
                 })
                 .ToList();
 

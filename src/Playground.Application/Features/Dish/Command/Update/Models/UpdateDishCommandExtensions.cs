@@ -4,12 +4,12 @@
     {
         public static string ToWarning(this UpdateDishCommand input)
         {
-            return $@"{nameof(input.DishName)}:{input.DishName}|{nameof(input.Price)}:{input.Price}|{nameof(input.FormattedErrosList)}:{input.FormattedErrosList()}";
+            return $@"{nameof(input.DishName)}:{input.DishName}|{nameof(input.Price)}:{input.Price}|{nameof(input.Quantity)}:{input.Quantity}|{nameof(input.FormattedErrosList)}:{input.FormattedErrosList()}";
         }
 
         public static string ToInformation(this UpdateDishCommand input)
         {
-            return $@"{nameof(input.DishName)}:{input.DishName}|{nameof(input.Price)}:{input.Price}";
+            return $@"{nameof(input.DishName)}:{input.DishName}|{nameof(input.Price)}:{input.Price}|{nameof(input.Quantity)}:{input.Quantity}";
         }
     }
 }

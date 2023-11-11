@@ -22,6 +22,9 @@ namespace Playground.Application.Features.Dish.Command.Update.Models
         [JsonPropertyName("chef_recommendation")]
         public bool ChefRecommendation { get; set; } = false;
 
+        [JsonPropertyName("quantity")]
+        public int Quantity { get; set; }
+
         public override IEnumerable<string> ErrosList()
         {
             var contract = new Contract<Notification>()
@@ -29,7 +32,8 @@ namespace Playground.Application.Features.Dish.Command.Update.Models
                 .IsNotNullOrEmpty(Id.ToString(), nameof(Id), $"{nameof(Id)} cannot be null or empty")
                 .IsTrue(Guid.TryParse(Id.ToString(), out _), nameof(Id), $"{nameof(Id)} must be a valid GUID")
                 .IsNotNullOrWhiteSpace(DishName, nameof(DishName), $"{nameof(DishName)} cannot be empty or just white spaces")
-                .IsGreaterThan(Price, 0, nameof(Price), $"{nameof(Price)} must be greater than 0");
+                .IsGreaterThan(Price, 0, nameof(Price), $"{nameof(Price)} must be greater than 0")
+                .IsGreaterOrEqualsThan(Quantity, 0, nameof(Quantity), $"{nameof(Quantity)} must be greater or equal to 0");
 
             return GenerateErrorList(contract);
         }
