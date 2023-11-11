@@ -38,7 +38,7 @@ function displayDishes(dishes) {
                     <strong>Name:</strong> ${dish.dish_name}, <strong>Price:</strong> $ ${dish.price.toFixed(2)}
                 </div>
                 <div>
-                    <input type="number" min="0" value="0" id="id_${dish.id}" class="form-control" style="width: 60px;">
+                    <input type="number" min="0" max="9" value="0" id="id_${dish.id}" class="form-control" style="width: 120px;" onkeydown="return false;">
                 </div>
             </div>
         `;
@@ -94,13 +94,15 @@ function reserveTable(event, orderResponse) {
     if (event) event.preventDefault();
 
     const urlParams = new URLSearchParams(window.location.search);
-    const tableId = urlParams.get('tableid') || Math.floor(Math.random() * 10) + 1; // Adicionado para ler da query string
+    const tableId = urlParams.get('tableid') || Math.floor(Math.random() * 10) + 1;
 
     const reservationDateTime = '2000-01-01T12:00';
     const customerName = 'none';
     const customerContact = 'none';
     const orderId = orderResponse ? orderResponse.order_id : null;
-    const reservationCode = (Math.floor(Math.random() * 700) + 300).toString();
+
+    const rawReservationCode = Math.floor(Math.random() * (99999 - 11111 + 1)) + 11111;
+    const reservationCode = rawReservationCode.toLocaleString('pt-BR');
 
     const reservationData = {
         reservation_date_time: reservationDateTime,
