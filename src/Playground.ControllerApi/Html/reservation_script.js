@@ -1,6 +1,16 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('customerContact').addEventListener('input', applyPhoneMask);
+
     document.getElementById('submitOrderAndReserve').addEventListener('click', function (event) {
         sendOrderAndReserve(event);
+    });
+
+    document.getElementById('customerName').addEventListener('input', function (event) {
+        // Substitui quaisquer caracteres que não sejam letras ou espaços
+        this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+
+        // Substitui dois ou mais espaços consecutivos por um único espaço
+        this.value = this.value.replace(/\s{2,}/g, ' ');
     });
 });
 
@@ -48,9 +58,21 @@ function reserveTable(event, orderResponse) {
             document.getElementById('displayCustomerName').innerText = customerName;
             document.getElementById('displayCustomerContact').innerText = customerContact;
             document.getElementById('displayReservationCode').innerText = reservationCode;
-            document.getElementById('confirmationSection').style.display = 'block';
 
+            document.getElementById('confirmationSection').style.display = 'block';
             document.getElementById('reservationForm').style.display = 'none';
         })
         .catch(error => console.error('Error:', error));
+}
+
+function applyPhoneMask(event) {
+    var numbers = event.target.value.replace(/\D/g, '');
+    var char = { 0: '(', 2: ') ', 7: '-' };
+    var phone = '';
+
+    for (var i = 0; i < numbers.length && i < 11; i++) {
+        phone += (char[i] || '') + numbers[i];
+    }
+
+    event.target.value = phone;
 }
