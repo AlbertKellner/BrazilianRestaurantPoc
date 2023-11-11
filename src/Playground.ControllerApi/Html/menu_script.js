@@ -2,7 +2,7 @@
     fetchDishes();
 
     document.getElementById('submitOrderAndReserve').addEventListener('click', function (event) {
-        sendOrderAndReserve(event);
+        reserveTable(event);
     });
 });
 
@@ -36,7 +36,7 @@ function displayDishes(dishes) {
     });
 }
 
-function sendOrderAndReserve(event) {
+function reserveTable(event) {
     event.preventDefault(); 
 
     sendOrder().then(guid => {

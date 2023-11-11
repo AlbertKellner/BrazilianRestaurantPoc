@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Reservation</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <form id="reservationForm">
+            <h2 class="mt-5">Table Reservation</h2>
+            <div class="form-group">
+                <label for="reservationDateTime">Reservation Date and Time:</label>
+                <input type="datetime-local" class="form-control" id="reservationDateTime" required>
+            </div>
+            <div class="form-group">
+                <label for="customerName">Customer Name:</label>
+                <input type="text" class="form-control" id="customerName" required>
+            </div>
+            <div class="form-group">
+                <label for="customerContact">Customer Contact:</label>
+                <input type="text" class="form-control" id="customerContact" required>
+            </div>
+            <button id="submitOrderAndReserve" class="btn btn-primary mt-3">Reserve Table</button>
+        </form>
+    </div>
+    <div class="container mt-5" id="confirmationSection" style="display: none;">
+        <h2 class="mt-5">Reservation Confirmation</h2>
+        <p id="confirmationMessage"></p>
+        <ul>
+            <li>Date and Time: <span id="displayDateTime"></span></li>
+            <li>Table: <span id="displayTableId"></span></li>
+            <li>Customer Name: <span id="displayCustomerName"></span></li>
+            <li>Contact: <span id="displayCustomerContact"></span></li>
+            <li>Reservation Code: <span id="displayReservationCode"></span></li>
+        </ul>
+    </div>
+    <script src="reservation_script.js"></script>
+</body>
+</html>
