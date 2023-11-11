@@ -116,7 +116,7 @@ function reserveTable(event, orderResponse) {
         .then(response => response.json())
         .then(data => {
             console.log('Reservation successful:', data);
-            window.location.href = `confirmation.html?tablereservationid=${data}`;
+            window.location.href = `menu_confirmation.html?orderid=${orderResponse.order_id}`;
         })
         .catch(error => console.error('Error:', error));
 }

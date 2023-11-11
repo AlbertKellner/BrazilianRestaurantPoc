@@ -32,7 +32,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Html\Confirmation.html">
+    <None Update="Html\menu_confirmation.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Html\menu_confirmation_script.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Html\reservation_script.js">
@@ -41,7 +44,7 @@
     <None Update="Html\reservation.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Html\Menu.html">
+    <None Update="Html\menu.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Html\menu_script.js">
