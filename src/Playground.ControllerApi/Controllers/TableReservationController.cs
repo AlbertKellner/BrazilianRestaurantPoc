@@ -48,7 +48,7 @@ namespace Playground.Controllers
             return CreatedAtRoute(
                 routeName: "TableReservationGetById",
                 routeValues: new { id = output.Id },
-                default);
+                output.Id);
         }
 
         [HttpGet("{id:Guid}", Name = "TableReservationGetById")]
