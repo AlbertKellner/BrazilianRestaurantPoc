@@ -37,7 +37,7 @@ function displayDishes(dishes) {
 }
 
 function sendOrderAndReserve(event) {
-    event.preventDefault(); // Adiciona esta linha para prevenir o refresh da página
+    event.preventDefault(); 
 
     sendOrder().then(guid => {
         const cleanedGuid = guid.replace(/['"]+/g, '');
@@ -70,7 +70,7 @@ function sendOrder() {
         .then(response => response.text()) 
         .then(guid => {
             console.log('Order successful, GUID:', guid);
-            return guid; // Retornar o GUID para a próxima função
+            return guid; 
         });
 }
 
@@ -90,7 +90,7 @@ function reserveTable(event, orderResponse) {
         table_id: tableId,
         customer_name: customerName,
         customer_contact: customerContact,
-        order_id: orderId, // GUID retornado pela API sendOrder
+        order_id: orderId, 
         reservation_code: reservationCode
     };
 
