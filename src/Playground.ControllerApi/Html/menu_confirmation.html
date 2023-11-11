@@ -11,7 +11,14 @@
         <h2 class="mt-5">Order Details</h2>
         <p id="confirmationMessage"></p>
         <ul>
-            <li>Order ID: <span id="orderInfo"></span></li>
+            <li style="display: none;">Order ID: <span id="orderId" ></span></li>
+            <li style="display: none;">Table: <span id="tableId"></span></li>
+            <br />
+            <li>Order Code: <span id="reservationCode"></span></li>
+            <br />
+            <li>Total Cost: <span id="totalCost"></span></li>
+            <br />
+            <li>Dishes: <ul id="dishesList"></ul></li>
         </ul>
     </div>
     <script src="menu_confirmation_script.js"></script>

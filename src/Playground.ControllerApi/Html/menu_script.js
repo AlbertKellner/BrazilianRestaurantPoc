@@ -35,7 +35,7 @@ function displayDishes(dishes) {
         listItem.innerHTML = `
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <strong>Name:</strong> ${dish.dish_name}, <strong>Price:</strong> ${dish.price}
+                    <strong>Name:</strong> ${dish.dish_name}, <strong>Price:</strong> NZD$ ${dish.price.toFixed(2)}
                 </div>
                 <div>
                     <input type="number" min="0" value="0" id="id_${dish.id}" class="form-control" style="width: 60px;">
@@ -116,7 +116,7 @@ function reserveTable(event, orderResponse) {
         .then(response => response.json())
         .then(data => {
             console.log('Reservation successful:', data);
-            window.location.href = `menu_confirmation.html?orderid=${orderResponse.order_id}`;
+            window.location.href = `menu_confirmation.html?orderid=${orderResponse.order_id}&tableid=${data}`;
         })
         .catch(error => console.error('Error:', error));
 }

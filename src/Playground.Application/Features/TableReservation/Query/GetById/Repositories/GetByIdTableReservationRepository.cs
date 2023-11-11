@@ -15,16 +15,22 @@ namespace Playground.Application.Features.TableReservation.Command.GetById.Repos
 
         public async Task<GetByIdTableReservationOutput> GetByIdTableReservationAsync(GetByIdTableReservationQuery input, CancellationToken cancellationToken)
         {
-            var TableReservationItem = _inMemoryDatabase.GetTableReservationtemById(input.Id);
+            var TableReservation = _inMemoryDatabase.GetTableReservationtemById(input.Id);
 
-            if (TableReservationItem == null)
+            if (TableReservation == null)
             {
                 return new();
             }
 
             var TableReservationOutput = new GetByIdTableReservationOutput
             {
-                Id = input.Id
+                Id = TableReservation.Id,
+                ReservationDateTime = TableReservation.ReservationDateTime,
+                TableId = TableReservation.TableId,
+                CustomerName = TableReservation.CustomerName,
+                CustomerContact = TableReservation.CustomerContact,
+                OrderId = TableReservation.OrderId,
+                ReservationCode = TableReservation.ReservationCode
             };
 
             return await Task.FromResult(TableReservationOutput);

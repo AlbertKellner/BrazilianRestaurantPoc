@@ -56,11 +56,11 @@ namespace Playground.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(GetByIdTableReservationOutput), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetByIdAsync(
-            [FromRoute] Guid Id,
+            [FromRoute] Guid id,
             [FromQuery] GetByIdTableReservationQuery input,
             CancellationToken cancellationToken)
         {
-            input.SetId(Id);
+            input.SetId(id);
 
             if (input.IsInvalid())
             {
