@@ -32,9 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Html\Order.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Html\Index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
