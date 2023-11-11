@@ -18,10 +18,10 @@
 
 function setMinReservationDate() {
     var tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1); // Adiciona 1 dia à data atual para obter o dia de amanhã
+    tomorrow.setDate(tomorrow.getDate() + 1);
 
     var day = tomorrow.getDate().toString().padStart(2, '0');
-    var month = (tomorrow.getMonth() + 1).toString().padStart(2, '0'); // getMonth retorna mês de 0-11
+    var month = (tomorrow.getMonth() + 1).toString().padStart(2, '0');
     var year = tomorrow.getFullYear();
 
     var minDate = `${year}-${month}-${day}T00:00`;
@@ -30,6 +30,11 @@ function setMinReservationDate() {
 
 function sendOrderAndReserve(event) {
     event.preventDefault();
+
+    if (!areFieldsValid()) {
+        alert("Please make sure to fill in all required fields: Reservation Date and Time, Customer Name, and Customer Contact.");
+        return;
+    }
 
     reserveTable(event, { order_id: '00000000-0000-0000-0000-000000000000' });
 }
@@ -67,7 +72,7 @@ function reserveTable(event, orderResponse) {
             console.log('Reservation successful:', data);
 
             document.getElementById('confirmationMessage').innerText = "Your table has been successfully reserved!";
-            document.getElementById('displayDateTime').innerText = reservationDateTime;
+            document.getElementById('displayDateTime').innerText = formatDateTime(reservationDateTime);
             document.getElementById('displayTableId').innerText = tableId;
             document.getElementById('displayCustomerName').innerText = customerName;
             document.getElementById('displayCustomerContact').innerText = customerContact;
@@ -77,6 +82,25 @@ function reserveTable(event, orderResponse) {
             document.getElementById('reservationForm').style.display = 'none';
         })
         .catch(error => console.error('Error:', error));
+}
+
+function areFieldsValid() {
+    const reservationDateTime = document.getElementById('reservationDateTime').value;
+    const customerName = document.getElementById('customerName').value;
+    const customerContact = document.getElementById('customerContact').value;
+
+    return reservationDateTime && customerName && customerContact;
+}
+
+function formatDateTime(dateTime) {
+    var date = new Date(dateTime);
+    var day = date.getDate().toString().padStart(2, '0');
+    var month = (date.getMonth() + 1).toString().padStart(2, '0');
+    var year = date.getFullYear();
+    var hours = date.getHours().toString().padStart(2, '0');
+    var minutes = date.getMinutes().toString().padStart(2, '0');
+
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
 function applyPhoneMask(event) {
