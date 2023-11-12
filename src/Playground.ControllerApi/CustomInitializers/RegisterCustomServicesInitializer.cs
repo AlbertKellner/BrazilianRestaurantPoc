@@ -1,4 +1,7 @@
-﻿using MediatR;
+﻿using BrazilianRestaurant.Application.Shared.ExternalServices;
+using BrazilianRestaurant.Application.Shared.ExternalServices.Interfaces;
+using Castle.Core.Smtp;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.OpenApi.Models;
@@ -93,7 +96,7 @@ namespace Microsoft.AspNetCore.Builder
             services.AddControllers(options =>
             {
                 options.Filters.Add(typeof(LogActionFilter));
-                //options.Filters.Add<HttpGlobalExceptionFilter>();
+                options.Filters.Add<HttpGlobalExceptionFilter>();
 
                 AddCacheProfile(options, durationInSeconds: 1, ResponseCacheProfile.For1Second);
                 AddCacheProfile(options, durationInSeconds: 5, ResponseCacheProfile.For5Seconds);
@@ -166,6 +169,8 @@ namespace Microsoft.AspNetCore.Builder
             services.AddScoped<IUpdateTableReservationRepository, UpdateTableReservationRepository>();
             services.AddScoped<IGetAllTableReservationRepository, GetAllTableReservationRepository>();
             services.AddScoped<IGetByIdTableReservationRepository, GetByIdTableReservationRepository>();
+
+            services.AddTransient<INewEmailSender, NewEmailSender>();
         }
 
         private static void RegisterCustomDependencies(IServiceCollection services)

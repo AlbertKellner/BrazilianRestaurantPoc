@@ -38,6 +38,9 @@ namespace Playground.Application.Features.TableReservation.Command.Create.Models
         [JsonPropertyName("reservation_code")]
         public string ReservationCode { get; set; } = string.Empty;
 
+        [JsonPropertyName("customer_email")]
+        public string CustomerEmail { get; set; } = string.Empty;
+
         public override IEnumerable<string> ErrosList()
         {
             var contract = new Contract<Notification>()

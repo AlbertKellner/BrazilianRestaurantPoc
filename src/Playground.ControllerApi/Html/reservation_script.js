@@ -5,6 +5,8 @@
 
     document.getElementById('customerContact').addEventListener('input', applyPhoneMask);
 
+    document.getElementById('customerEmail').addEventListener('input', validateEmail);
+
     document.getElementById('submitOrderAndReserve').addEventListener('click', function (event) {
         sendOrderAndReserve(event);
     });
@@ -44,7 +46,19 @@ function sendOrderAndReserve(event) {
         return;
     }
 
+    const customerEmail = document.getElementById('customerEmail').value;
+
+    if (!validateEmail(customerEmail)) {
+        alert("Please enter a valid email.");
+        return;
+    }
+
     reserveTable(event, { order_id: '00000000-0000-0000-0000-000000000000' });
+}
+
+function validateEmail(email) {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
 }
 
 function reserveTable(event, orderResponse) {
@@ -56,6 +70,7 @@ function reserveTable(event, orderResponse) {
     const reservationDateTime = document.getElementById('reservationDateTime').value;
     const customerName = document.getElementById('customerName').value;
     const customerContact = document.getElementById('customerContact').value;
+    const customerEmail = document.getElementById('customerEmail').value;
     const orderId = '00000000-0000-0000-0000-000000000000';
     const reservationCode = (Math.floor(Math.random() * 700) + 300).toString();
 
@@ -64,6 +79,7 @@ function reserveTable(event, orderResponse) {
         table_id: tableId,
         customer_name: customerName,
         customer_contact: customerContact,
+        customer_email: customerEmail,
         order_id: orderId,
         reservation_code: reservationCode
     };

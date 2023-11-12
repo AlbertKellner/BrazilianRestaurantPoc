@@ -24,7 +24,8 @@ namespace Playground.Application.Features.TableReservation.Command.Create.Reposi
                 CustomerName = input.CustomerName,
                 CustomerContact = input.CustomerContact,
                 OrderId = input.OrderId,
-                ReservationCode = input.ReservationCode
+                ReservationCode = input.ReservationCode,
+                CustomerEmail = input.CustomerEmail
             };
 
             _inMemoryDatabase.AddTableReservationItem(newItem);

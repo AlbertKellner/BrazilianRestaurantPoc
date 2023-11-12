@@ -9,5 +9,6 @@
         public string CustomerContact { get; set; } = string.Empty;
         public Guid OrderId { get; set; }
         public string ReservationCode { get; set; } = string.Empty;
+        public string CustomerEmail { get; set; } = string.Empty;
     }
 }
