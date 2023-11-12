@@ -41,9 +41,16 @@ function setMinReservationDate() {
 function sendOrderAndReserve(event) {
     event.preventDefault();
 
+
+
     if (!areFieldsValid()) {
         alert("Please make sure to fill in all required fields: Reservation Date and Time, Customer Name, and Customer Contact.");
         return;
+    }
+    else {
+        var submitButton = document.getElementById('submitOrderAndReserve');
+        submitButton.textContent = "Saving and Sending Email ✉️";
+        submitButton.disabled = true;
     }
 
     const customerEmail = document.getElementById('customerEmail').value;
@@ -95,7 +102,7 @@ function reserveTable(event, orderResponse) {
         .then(data => {
             console.log('Reservation successful:', data);
 
-            document.getElementById('confirmationMessage').innerText = "Your table has been successfully reserved!";
+            document.getElementById('confirmationMessage').innerText = "Your table has been successfully reserved! A confirmation email has been sent to you.";
             document.getElementById('displayDateTime').innerText = formatDateTime(reservationDateTime);
             document.getElementById('displayTableId').innerText = tableId;
             document.getElementById('displayCustomerName').innerText = customerName;
