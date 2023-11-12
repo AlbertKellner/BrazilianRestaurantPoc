@@ -42,11 +42,11 @@ void AddSampleDishes()
         new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Bolinho de Bacalhau", Price = 8.00m, ChefRecommendation = true, Quantity = 1, Category = "Starters" },
         new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Esfiha de Carne", Price = 6.00m, ChefRecommendation = false, Quantity = 1, Category = "Starters" },
 
-        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Virado à Paulista", Price = 27.50m, ChefRecommendation = true, Quantity = 1, Category = "Main Courses" },
-        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Feijoada", Price = 35.00m, ChefRecommendation = true, Quantity = 1, Category = "Main Courses" },
-        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Bife à Parmegiana", Price = 30.00m, ChefRecommendation = false, Quantity = 1, Category = "Main Courses" },
-        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Picanha na Chapa", Price = 40.00m, ChefRecommendation = true, Quantity = 1, Category = "Main Courses" },
-        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Frango à Passarinho", Price = 25.00m, ChefRecommendation = false, Quantity = 1, Category = "Main Courses" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Virado à Paulista", Price = 27.50m, ChefRecommendation = true, Quantity = 1, Category = "À la carte" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Feijoada", Price = 35.00m, ChefRecommendation = true, Quantity = 1, Category = "À la carte" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Bife à Parmegiana", Price = 30.00m, ChefRecommendation = false, Quantity = 1, Category = "À la carte" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Picanha na Chapa", Price = 40.00m, ChefRecommendation = true, Quantity = 1, Category = "À la carte" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Frango à Passarinho", Price = 25.00m, ChefRecommendation = false, Quantity = 1, Category = "À la carte" },
 
         new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Suco de Laranja", Price = 6.00m, ChefRecommendation = false, Quantity = 1, Category = "Beverages" },
         new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Refrigerante", Price = 4.50m, ChefRecommendation = false, Quantity = 1, Category = "Beverages" },
