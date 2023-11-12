@@ -50,7 +50,7 @@ function displayDishes(dishes, orderId) {
         totalCost += dish.price;
         const dishItem = document.createElement('li');
         //dishItem.textContent = `${dish.dish_name} - $ ${dish.price.toFixed(2)}`;
-        dishItem.textContent = `${dish.dish_name}`;
+        dishItem.textContent = `(${dish.category}) ${dish.dish_name}`;
         dishesList.appendChild(dishItem);
     });
 

@@ -25,6 +25,9 @@ namespace Playground.Application.Features.Dish.Command.Update.Models
         [JsonPropertyName("quantity")]
         public int Quantity { get; set; }
 
+        [JsonPropertyName("category")]
+        public string Category { get; set; } = string.Empty;
+
         public override IEnumerable<string> ErrosList()
         {
             var contract = new Contract<Notification>()

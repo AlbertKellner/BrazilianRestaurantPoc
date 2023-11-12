@@ -27,24 +27,60 @@ function getTableIdFromQuery() {
 }
 
 function displayDishes(dishes) {
-    const dishesList = document.getElementById('dishesList');
+    const dishesByCategory = groupDishesByCategory(dishes);
+    const dishesListContainer = document.getElementById('dishesList');
+    dishesListContainer.innerHTML = '';
+
+    for (const [category, dishes] of Object.entries(dishesByCategory)) {
+        const categoryCard = createCategoryCard(category, dishes);
+        dishesListContainer.appendChild(categoryCard);
+    }
+}
+
+function createCategoryCard(categoryName, dishes) {
+    const card = document.createElement('div');
+    card.classList.add('card', 'mb-3');
+
+    const cardHeader = document.createElement('div');
+    cardHeader.classList.add('card-header');
+    cardHeader.innerText = categoryName;
+    card.appendChild(cardHeader);
+
+    const cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
+
     dishes.forEach(dish => {
-        let listItem = document.createElement('li');
-        listItem.classList.add('list-group-item');
-
-        listItem.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <strong>Name:</strong> ${dish.dish_name}, <strong>Price:</strong> $ ${dish.price.toFixed(2)}
-                </div>
-                <div>
-                    <input type="number" min="0" max="9" value="0" id="id_${dish.id}" class="form-control" style="width: 120px;" onkeydown="return false;">
-                </div>
-            </div>
-        `;
-
-        dishesList.appendChild(listItem);
+        const listItem = createDishListItem(dish);
+        cardBody.appendChild(listItem);
     });
+
+    card.appendChild(cardBody);
+    return card;
+}
+
+function createDishListItem(dish) {
+    const listItem = document.createElement('li');
+    listItem.classList.add('list-group-item');
+
+    listItem.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <strong>Name:</strong> ${dish.dish_name}, <strong>Price:</strong> $${dish.price.toFixed(2)}
+            </div>
+            <div>
+                <input type="number" min="0" max="9" value="0" id="id_${dish.id}" class="form-control" style="width: 120px;" onkeydown="return false;">
+            </div>
+        </div>
+    `;
+    return listItem;
+}
+
+function groupDishesByCategory(dishes) {
+    return dishes.reduce((acc, dish) => {
+        acc[dish.category] = acc[dish.category] || [];
+        acc[dish.category].push(dish);
+        return acc;
+    }, {});
 }
 
 function sendOrderAndReserve(event) {

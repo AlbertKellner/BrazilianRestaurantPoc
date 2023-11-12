@@ -28,7 +28,8 @@ namespace Playground.Application.Features.Dish.Command.GetById.Repositories
                 DishName = dishItem.DishName,
                 Price = dishItem.Price,
                 ChefRecommendation = dishItem.ChefRecommendation,
-                Quantity = dishItem.Quantity
+                Quantity = dishItem.Quantity,
+                Category = dishItem.Category
             };
 
             return await Task.FromResult(dishOutput);

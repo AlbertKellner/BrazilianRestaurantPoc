@@ -68,7 +68,7 @@ function fetchDishDetails(dishId, totalCost) {
             console.log('Dish details:', dishData);
             var dishesList = document.getElementById('dishesList');
             var dishItem = document.createElement('li');
-            dishItem.textContent = `${dishData.dish_name} - $ ${dishData.price.toFixed(2)}`;
+            dishItem.textContent = `(${dishData.category}) ${dishData.dish_name} - $ ${dishData.price.toFixed(2)}`;
             dishesList.appendChild(dishItem);
 
             return totalCost + dishData.price;

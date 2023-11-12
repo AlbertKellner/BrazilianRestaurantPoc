@@ -1,4 +1,4 @@
-using BrazilianRestaurant.Application.Shared.InMemoryDatabase.DataBaseItem;
+﻿using BrazilianRestaurant.Application.Shared.InMemoryDatabase.DataBaseItem;
 using Playground.Application.Shared.InMemoryDatabase;
 using Serilog;
 
@@ -35,18 +35,30 @@ static void FlushLogsBeforeCloseApplication()
 void AddSampleDishes()
 {
     var dishes = new List<DataBaseDishItem>
-        {
-            new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Feijoada", Price = 20, ChefRecommendation = true },
-            new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "P�o de Queijo", Price = 5, ChefRecommendation = false },
-            new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Moqueca", Price = 22, ChefRecommendation = true },
-            new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Churrasco", Price = 25, ChefRecommendation = true },
-            new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Coxinha", Price = 4, ChefRecommendation = false },
-            new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Acaraj�", Price = 6, ChefRecommendation = false },
-            new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Brigadeiro", Price = 3, ChefRecommendation = false },
-            new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Pastel", Price = 5, ChefRecommendation = false },
-            new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Tapioca", Price = 7, ChefRecommendation = false },
-            new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Empad�o", Price = 8, ChefRecommendation = false }
-        };
+    {
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Pão de Queijo", Price = 6.50m, ChefRecommendation = true, Quantity = 1, Category = "Starters" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Coxinha de Frango", Price = 7.00m, ChefRecommendation = false, Quantity = 1, Category = "Starters" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Pastel de Queijo", Price = 5.00m, ChefRecommendation = false, Quantity = 1, Category = "Starters" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Bolinho de Bacalhau", Price = 8.00m, ChefRecommendation = true, Quantity = 1, Category = "Starters" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Esfiha de Carne", Price = 6.00m, ChefRecommendation = false, Quantity = 1, Category = "Starters" },
+
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Virado à Paulista", Price = 27.50m, ChefRecommendation = true, Quantity = 1, Category = "Main Courses" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Feijoada", Price = 35.00m, ChefRecommendation = true, Quantity = 1, Category = "Main Courses" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Bife à Parmegiana", Price = 30.00m, ChefRecommendation = false, Quantity = 1, Category = "Main Courses" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Picanha na Chapa", Price = 40.00m, ChefRecommendation = true, Quantity = 1, Category = "Main Courses" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Frango à Passarinho", Price = 25.00m, ChefRecommendation = false, Quantity = 1, Category = "Main Courses" },
+
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Suco de Laranja", Price = 6.00m, ChefRecommendation = false, Quantity = 1, Category = "Beverages" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Refrigerante", Price = 4.50m, ChefRecommendation = false, Quantity = 1, Category = "Beverages" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Chá Mate Gelado", Price = 5.00m, ChefRecommendation = false, Quantity = 1, Category = "Beverages" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Caipirinha", Price = 12.00m, ChefRecommendation = true, Quantity = 1, Category = "Beverages" },
+
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Brigadeiro", Price = 3.00m, ChefRecommendation = true, Quantity = 1, Category = "Desserts" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Beijinho", Price = 3.00m, ChefRecommendation = false, Quantity = 1, Category = "Desserts" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Quindim", Price = 5.00m, ChefRecommendation = true, Quantity = 1, Category = "Desserts" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Pudim de Leite", Price = 6.00m, ChefRecommendation = false, Quantity = 1, Category = "Desserts" },
+        new DataBaseDishItem { Id = Guid.NewGuid(), DishName = "Bolo de Rolo", Price = 7.50m, ChefRecommendation = true, Quantity = 1, Category = "Desserts" }
+    };
 
     foreach (var dish in dishes)
     {

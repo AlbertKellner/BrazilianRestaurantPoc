@@ -19,6 +19,9 @@ namespace Playground.Application.Features.Dish.Query.GetById.Models
         [JsonPropertyName("quantity")]
         public int Quantity { get; set; }
 
+        [JsonPropertyName("category")]
+        public string Category { get; set; } = string.Empty;
+
         public bool IsValid() => Id != Guid.Empty;
     }
 }

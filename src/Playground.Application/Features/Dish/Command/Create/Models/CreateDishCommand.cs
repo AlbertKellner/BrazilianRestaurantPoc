@@ -32,6 +32,9 @@ namespace Playground.Application.Features.Dish.Command.Create.Models
             set => quantity = value == 0 ? 1 : value;
         }
 
+        [JsonPropertyName("category")]
+        public string Category { get; set; } = string.Empty;
+
         public override IEnumerable<string> ErrosList()
         {
             var contract = new Contract<Notification>()
