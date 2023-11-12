@@ -67,13 +67,15 @@ function createDishListItem(dish) {
             <div>
                 <strong>Name:</strong> ${dish.dish_name}, <strong>Price:</strong> $${dish.price.toFixed(2)}
             </div>
-            <div>
+            <div class="d-flex align-items-center">
                 <input type="number" min="0" max="9" value="0" id="id_${dish.id}" class="form-control" style="width: 120px;" onkeydown="return false;">
+                <a href="edit_dish.html?dishid=${dish.id}" class="btn btn-primary ml-2">Edit</a>
             </div>
         </div>
     `;
     return listItem;
 }
+
 
 function groupDishesByCategory(dishes) {
     return dishes.reduce((acc, dish) => {

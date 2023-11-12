@@ -43,7 +43,7 @@ function reserveTable(event, orderResponse) {
     if (event) event.preventDefault();
 
     const urlParams = new URLSearchParams(window.location.search);
-    const tableId = urlParams.get('tableId') || Math.floor(Math.random() * 10) + 1; // Adicionado para ler da query string
+    const tableId = urlParams.get('tableId') || Math.floor(Math.random() * 10) + 1;
 
     const reservationDateTime = document.getElementById('reservationDateTime').value;
     const customerName = document.getElementById('customerName').value;
