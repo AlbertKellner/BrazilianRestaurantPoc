@@ -16,12 +16,21 @@
             padding: 10px 0;
         }
 
+        .header-background {
+            background-image: url('../Static/background.png');
+            /* background-size: cover;
+            background-position: fixed; */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
     </style>
 </head>
-<body>
+<body class="header-background">
     <div class="container mt-5">
         <div class="text-center">
-            <h1>Brazilian Restaurant 🍻 🍽️</h1>
+            <h1 style="color: white">Brazilian Restaurant 🍻 🍽️</h1>
         </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +53,7 @@
             </div>
         </nav>
         <div class="container mt-5">
-            <h2 id="title">Dish Menu</h2>
+            <h2 id="title" style="color: white">Dish Menu</h2>
             <ul id="dishesList" class="list-group">
                 <!-- Dishes will be inserted here -->
             </ul>
