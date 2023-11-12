@@ -1,4 +1,8 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
+    if (!isAdmin()) {
+        document.querySelector('a[href="orders_list.html"]').parentElement.style.display = 'none';
+    }
+
     document.getElementById('customerContact').addEventListener('input', applyPhoneMask);
 
     document.getElementById('submitOrderAndReserve').addEventListener('click', function (event) {
@@ -16,6 +20,10 @@
     setMinReservationDate();
 });
 
+function isAdmin() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('admin') === 'true';
+}
 function setMinReservationDate() {
     var tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);

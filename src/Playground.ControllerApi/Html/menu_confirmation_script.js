@@ -1,4 +1,11 @@
 ﻿document.addEventListener('DOMContentLoaded', function () {
+    var isAdmin = getQueryStringParameter('admin') === 'true';
+    var ordersListNavItem = document.querySelector('a[href="orders_list.html"]').parentNode;
+
+    if (!isAdmin) {
+        ordersListNavItem.style.display = 'none';
+    }
+
     var orderId = getQueryStringParameter('orderid');
     var tableId = getQueryStringParameter('tableid');
 
@@ -9,6 +16,12 @@
     fetchOrderDetails(orderId);
 });
 
+function getQueryStringParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
 function getQueryStringParameter(name) {
     name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
