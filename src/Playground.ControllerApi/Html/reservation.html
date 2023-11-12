@@ -9,9 +9,19 @@
         .beige-card {
             background-color: #f5f5dc;
         }
+
+        .header-background {
+            background-image: url('../Static/background.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            text-shadow: 2px 2px 4px #000000; /* Horizontal, vertical, blur, color */
+        }
     </style>
 </head>
-<body>
+<body class="header-background">
     <div class="container mt-5">
         <div class="text-center">
             <h1>Brazilian Restaurant 🍻 🍽️</h1>
@@ -38,26 +48,30 @@
         </nav>
         <div class="container mt-5">
             <form id="reservationForm">
-                <h2 class="mt-5">Table Reservation</h2>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="reservationDateTime">Reservation Date and Time:</label>
-                        <input type="datetime-local" class="form-control" id="reservationDateTime" required onkeydown="return false;">
-                    </div>
-                    <div class="form-group col-md-9">
+                <div class="card beige-card">
+                    <div class="card-body">
+                        <h2 class="mt-5">Table Reservation</h2>
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="reservationDateTime">Reservation Date and Time:</label>
+                                <input type="datetime-local" class="form-control" id="reservationDateTime" required onkeydown="return false;">
+                            </div>
+                            <div class="form-group col-md-9">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-8">
+                                <label for="customerName">Customer Name:</label>
+                                <input type="text" class="form-control" id="customerName" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="customerContact">Customer Contact:</label>
+                                <input type="text" class="form-control" id="customerContact" required>
+                            </div>
+                        </div>
+                        <button id="submitOrderAndReserve" class="btn btn-primary mt-3">Reserve Table 📌</button>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-8">
-                        <label for="customerName">Customer Name:</label>
-                        <input type="text" class="form-control" id="customerName" required>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="customerContact">Customer Contact:</label>
-                        <input type="text" class="form-control" id="customerContact" required>
-                    </div>
-                </div>
-                <button id="submitOrderAndReserve" class="btn btn-primary mt-3">Reserve Table 📌</button>
             </form>
         </div>
         <div class="container mt-5" id="confirmationSection" style="display: none;">
