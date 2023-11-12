@@ -9,7 +9,23 @@
     document.getElementById('submitOrderAndReserve').addEventListener('click', function (event) {
         sendOrderAndReserve(event);
     });
+
+    toggleOrdersListVisibility();
 });
+
+function toggleOrdersListVisibility() {
+    const isAdmin = getAdminFlagFromQuery();
+    const ordersListLink = document.querySelector('a[href="orders_list.html"]');
+
+    if (!isAdmin && ordersListLink) {
+        ordersListLink.style.display = 'none';
+    }
+}
+
+function getAdminFlagFromQuery() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('admin') === 'true';
+}
 
 
 function fetchDishes() {
@@ -59,8 +75,14 @@ function createCategoryCard(categoryName, dishes) {
 }
 
 function createDishListItem(dish) {
+    const isAdmin = getAdminFlagFromQuery();
     const listItem = document.createElement('li');
     listItem.classList.add('list-group-item');
+
+    let editButtonHTML = '';
+    if (isAdmin) {
+        editButtonHTML = `<a href="edit_dish.html?dishid=${dish.id}" class="btn btn-primary ml-2">Edit</a>`;
+    }
 
     listItem.innerHTML = `
         <div class="d-flex justify-content-between align-items-center">
@@ -69,12 +91,18 @@ function createDishListItem(dish) {
             </div>
             <div class="d-flex align-items-center">
                 <input type="number" min="0" max="9" value="0" id="id_${dish.id}" class="form-control" style="width: 120px;" onkeydown="return false;">
-                <a href="edit_dish.html?dishid=${dish.id}" class="btn btn-primary ml-2">Edit</a>
+                ${editButtonHTML}
             </div>
         </div>
     `;
     return listItem;
 }
+
+function getAdminFlagFromQuery() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('admin') === 'true';
+}
+
 
 
 function groupDishesByCategory(dishes) {
