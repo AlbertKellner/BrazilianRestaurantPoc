@@ -1,5 +1,5 @@
 ﻿using Playground.Application.Shared.AsyncLocals;
-
+//Tracing logs by requisition
 namespace Playground.Application.Infrastructure.Handlers
 {
     public class CorrelationIdHandler : DelegatingHandler
